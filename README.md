@@ -10,11 +10,11 @@ Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo de
 
 ## Integrantes
 
+* Agner Pereira Lana
 * Anderson Bernardo Silva
 * Kayhene Abreu Bernardo Silva
 * Matheus Alencar da Silva
 * Ricardo Morais Bicalho Costa
-* Ryan Felipe Gonçalves Ferreira Santos
 * Tiago Daniel Nocce
 
 ## Orientador
