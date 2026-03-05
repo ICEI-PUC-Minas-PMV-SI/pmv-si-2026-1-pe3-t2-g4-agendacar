@@ -1,10 +1,6 @@
 # 2. ESTADO DA ARTE
-O estado da arte é um mapeamento de toda a produção acadêmica sobre um assunto específico, aqui especificamente sobre o tema escolhido para o seu trabalho. A ideia consiste em reunir as conclusões que outras pesquisas científicas chegaram sobre um determinado assunto. Neste momento você deverá buscar respostas para as seguintes perguntas:
+  Devido ao rápido avanço tecnologico, torna-se de suma importância a adoção de tecnologias na gestão de negócios de microempreendedores. Porém, pesquisas recentes indicam que existe uma resistência na utilização de ferramentas digitais voltadas à gestão.  De acordo com o artigo divulgado pela Valor Economico(2025), tendo como base os dados da plataforma MAISMEI, 38% dos MEIs usam aplicativos para organizar a rotina, enquanto 23% não utilizam nenhuma ferramenta digital para esse objetivo.
 
-1.	Quais pesquisas estão sendo desenvolvidas sobre esse tema?
-2.	Quem está pesquisando e onde?
-3.	O que as atuais pesquisas científicas concluíram sobre o tema? 
-4.	Quais as divergências dos pesquisadores sobre o assunto? 
-5.	Quais aspectos carecem de maior abordagem?
+  De acordo com David L. Rogers (2017), as tecnologias digitais estão transformando estratégias de negócios básicas, fazendo com que empresas que desejam permanecer competitivas no mercado atualizem seus pressupostos fundamentais.
 
-É importante referenciar estas pesquisas, fazendo as devidas citações de acordo com as normas da ABNT e colocando as referências completas ao final do trabalho.
+  Nesse contexto, surgem diversas pesquisas voltadas ao desenvolvimento de softwares para atender às necessidades de microempreendedores. Nesse sentido,, J. F. Brito et al.(2025) desenvolveram um sistema para auxiliar o microempreendedor na administração do seu negócio. Pensando em usuários sem familiaridade com tecnologia, eles utilizaram princípios da usabilidade e acessibilidade, resultando em uma ferramenta intuitiva, acessível e de baixo custo.
