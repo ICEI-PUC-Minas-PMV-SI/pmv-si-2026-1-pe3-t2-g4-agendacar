@@ -21,15 +21,15 @@ A implementação de uma plataforma digital que conecte prestadores de serviços
 ## 1.3.1. Sob a Ótica do Cliente (Público-alvo primário)
 Para o consumidor, a solução ataca as principais "dores" do mercado atual:
 
-  *. Confiabilidade e Transparência: Em um cenário onde manter o veículo é mais econômico do que trocar, o usuário busca segurança. O sistema permite avaliações, histórico de manutenções e comparação de orçamentos.
-  *. Comodidade: Assim como no setor de alimentação e transporte, o cliente moderno exige agilidade. O agendamento online elimina a incerteza de filas e a perda de tempo em deslocamentos desnecessários.
+* **Confiabilidade e Transparência:** Em um cenário onde manter o veículo é mais econômico do que trocar, o usuário busca segurança. O sistema permite avaliações, histórico de manutenções e comparação de orçamentos.
+* **Comodidade:** Assim como no setor de alimentação e transporte, o cliente moderno exige agilidade. O agendamento online elimina a incerteza de filas e a perda de tempo em deslocamentos desnecessários.
 
 ## 1.3.2. Sob a Ótica das Oficinas (Público-alvo secundário)
 Para o empresário do setor, a tecnologia deixa de ser uma "burocracia" e passa a ser uma ferramenta de sobrevivência e escala:
 
-  *. Otimização Operacional: Com o aumento de 80 para 122 atendimentos mensais (um salto de 52,5%), o controle manual torna-se inviável. O sistema permite o escalonamento inteligente da mão de obra.
-  *. Previsibilidade Financeira: A gestão antecipada da demanda permite uma compra de insumos mais estratégica, reduzindo estoques parados e melhorando o fluxo de caixa.
-  *. Quebra de Barreiras Culturais: Ao oferecer uma interface intuitiva, a solução remove o receio da modernização, inserindo a oficina de bairro na economia digital sem a necessidade de grandes investimentos em TI própria.
+* **Otimização Operacional:** Com o aumento de 80 para 122 atendimentos mensais (um salto de 52,5%), o controle manual torna-se inviável. O sistema permite o escalonamento inteligente da mão de obra.
+* **Previsibilidade Financeira:** A gestão antecipada da demanda permite uma compra de insumos mais estratégica, reduzindo estoques parados e melhorando o fluxo de caixa.
+* **Quebra de Barreiras Culturais:** Ao oferecer uma interface intuitiva, a solução remove o receio da modernização, inserindo a oficina de bairro na economia digital sem a necessidade de grandes investimentos em TI própria.
 
 ## 1.3.3. Viabilidade de Mercado
 O projeto se sustenta na mudança de comportamento do consumidor brasileiro, que já está habituado ao modelo de marketplaces, no nosso caso, sendo um de serviço. Unir a necessidade de manutenção preventiva (decorrente do envelhecimento da frota) com a facilidade tecnológica cria um ambiente propício para a fidelização e para o crescimento sustentável de toda a cadeia automotiva.
