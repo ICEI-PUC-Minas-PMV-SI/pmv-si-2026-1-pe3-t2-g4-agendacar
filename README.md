@@ -6,7 +6,7 @@
 
 `SEMESTRE: 3º`
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+Esse projeto visa a implementação de uma plataforma digital que conecte prestadores de serviços automotivos a proprietários de veículos, similar ao ecossistema de um marketplace de serviços, justificando-se pela necessidade urgente de mitigar o gap entre a explosão da demanda e a baixa maturidade digital do setor.
 
 ## Integrantes
 
