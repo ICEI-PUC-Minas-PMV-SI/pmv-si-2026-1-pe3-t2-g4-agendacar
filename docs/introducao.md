@@ -11,7 +11,7 @@ A implementação de um sistema de agendamento implica no amadurecimento da empr
 Nesse momento você deve apresentar o problema que a sua aplicação deve resolver. No entanto, não é a hora de comentar sobre a aplicação. 
 Descreva também o contexto em que essa aplicação será usada, se houver: empresa, tecnologias, etc. Novamente, descreva apenas o que de fato existir, pois ainda não é a hora de apresentar requisitos detalhados ou projetos.
 
-## 1.2. Objetivos do Trabalho [*](objetivo.md)
+## 1.2. Objetivos do Trabalho
 ### Objetivo Geral
 Este trabalho tem o objetivo de desenvolver um software para tornar a rotina dos profissionais do setor de mecânica e manutenção automotiva mais prática e eficiente, eliminando a burocracia e o descontrole nos processos de estoque, financeiro e agendamento. Por meio da automatização dessas tarefas, o profissional poderá concentrar-se em prestar um serviço de qualidade, economizando tempo, recursos e energia.
 ### Objetivos Específicos
