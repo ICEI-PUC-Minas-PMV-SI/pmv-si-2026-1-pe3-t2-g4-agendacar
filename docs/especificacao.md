@@ -70,7 +70,7 @@ O AgendaCar não irá abranger funcionalidades relacionadas ao controle de estoq
 ## 3.4 Modelagem do Sistema
 
 ### 3.4.1 Diagrama de Casos de Uso
-Como observado no diagrama de casos de uso da Figura 1, a secretária poderá gerenciar as matrículas e professores no sistema, enquanto o coordenador, além dessas funções, poderá gerenciar os cursos de aperfeiçoamento.
+Como observado no diagrama de casos de uso da Figura 1, o cliente poderá realizar a busca por prestadores e solicitar agendamentos de serviços, enquanto o prestador de serviços terá a responsabilidade de gerenciar as solicitações recebidas, podendo aceitar, recusar ou propor novos horários. Além disso, o sistema permite que o cliente realize a avaliação técnica e de atendimento após a conclusão do serviço, garantindo a transparência e a confiabilidade da plataforma para ambos os usuários.
 
 #### Figura 1: Diagrama de Casos de Uso do Sistema.
 
