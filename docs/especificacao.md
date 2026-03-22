@@ -128,6 +128,23 @@ Fluxo Alternativo (etapa 2):
 
 Pós-condições: O sistema informa ao prestador que ter um percentual de recusas elevado influencia na sua avaliação.
 
+### Avaliar Prestador (CSU-03)
+
+Sumário: O cliente registra uma nota e um comentário sobre a experiência do serviço realizado, contribuindo para o ranking de confiabilidade do prestador no sistema.  
+Ator Primário: Cliente  
+Ator Secundário: Prestador  
+Pré-condições: O agendamento deve estar com o status "Concluído" no sistema.
+
+Fluxo Principal:
+1. O sistema envia uma notificação ao cliente informando que o serviço foi finalizado e solicita uma avaliação.
+2. O cliente acessa a área de "Meus Agendamentos" e seleciona o serviço concluído.
+3. O sistema apresenta uma tela com escala de 1 a 5 estrelas e um campo de texto para comentários.
+4. O cliente preenche a pontuação, escreve o comentário (opcional) e seleciona a opção "Enviar Avaliação".
+5. O sistema valida as informações, salva a avaliação e atualiza a média aritmética do prestador em tempo real.
+6. O caso de uso é concluído.
+
+Pós-condições: * A avaliação torna-se visível no perfil público do prestador para outros usuários.
+* O prestador recebe uma notificação informando que recebeu uma nova avaliação (sem permissão para editá-la ou excluí-la).
 
 ### 3.4.3 Diagrama de Classes 
 
