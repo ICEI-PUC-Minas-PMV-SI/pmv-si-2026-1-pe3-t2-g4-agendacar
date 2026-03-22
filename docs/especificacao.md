@@ -74,7 +74,7 @@ Como observado no diagrama de casos de uso da Figura 1, a secretária poderá ge
 
 #### Figura 1: Diagrama de Casos de Uso do Sistema.
 
-![dcu](https://github.com/user-attachments/assets/41f6b731-b44e-43aa-911f-423ad6198f47)
+![CSU](img/csu_01_02_03.png)
  
 ### 3.4.2 Descrições de Casos de Uso
 
@@ -143,7 +143,7 @@ Fluxo Principal:
 5. O sistema valida as informações, salva a avaliação e atualiza a média aritmética do prestador em tempo real.
 6. O caso de uso é concluído.
 
-Pós-condições: * A avaliação torna-se visível no perfil público do prestador para outros usuários.
+Pós-condições: A avaliação torna-se visível no perfil público do prestador para outros usuários.
 * O prestador recebe uma notificação informando que recebeu uma nova avaliação (sem permissão para editá-la ou excluí-la).
 
 ### 3.4.3 Diagrama de Classes 
