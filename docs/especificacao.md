@@ -143,8 +143,7 @@ Fluxo Principal:
 5. O sistema valida as informações, salva a avaliação e atualiza a média aritmética do prestador em tempo real.
 6. O caso de uso é concluído.
 
-Pós-condições: A avaliação torna-se visível no perfil público do prestador para outros usuários.
-* O prestador recebe uma notificação informando que recebeu uma nova avaliação (sem permissão para editá-la ou excluí-la).
+Pós-condições: A avaliação torna-se visível no perfil público do prestador para outros usuários. Além do prestador receber uma notificação informando que recebeu uma nova avaliação (sem permissão para editá-la ou excluí-la).
 
 ### 3.4.3 Diagrama de Classes 
 
