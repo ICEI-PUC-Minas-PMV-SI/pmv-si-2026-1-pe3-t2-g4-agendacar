@@ -176,6 +176,78 @@ Fluxo Alternativo (etapa 6)
   
 Pós-condições: O usuário é cadastrado com sucesso com o tipo definido corretamente.
 
+**Fluxo Principal – Autenticação:**
+
+1. O usuário acessa a tela de login.
+2. O usuário informa suas credenciais de acesso.
+3. O sistema valida as credenciais.
+4. O sistema autentica o usuário.
+
+---
+
+**Fluxo Principal – Cliente:**
+
+1. O cliente acessa a plataforma após login.
+2. O cliente acessa o catálogo de serviços/produtos.
+3. O cliente visualiza os serviços/produtos disponíveis.
+
+---
+
+**Fluxo Principal – Prestador:**
+
+1. O prestador acessa a plataforma após login.
+2. O prestador acessa o painel de gerenciamento.
+3. O prestador seleciona a área desejada:
+
+   * Gerenciamento de Agenda.
+   * Gerenciamento de Catálogo.
+
+---
+
+**Fluxo Principal – Gerenciamento de Agenda (CSU-05):**
+
+1. O prestador acessa o painel de agenda.
+2. O sistema exibe as opções de gerenciamento.
+3. O prestador define horários de atendimento.
+4. O prestador bloqueia datas específicas.
+5. O prestador ajusta a quantidade de vagas simultâneas.
+6. O sistema salva as configurações.
+
+---
+
+**Fluxo Principal – Gerenciamento de Catálogo (CSU-06):**
+
+1. O prestador acessa o catálogo para gerenciamento.
+2. O sistema exibe os itens cadastrados.
+3. O prestador escolhe uma ação:
+
+   * Cadastrar novo serviço/produto.
+   * Atualizar descrições e preços.
+   * Inativar/remover serviço ou produto.
+4. O sistema processa a ação selecionada.
+5. O sistema atualiza o catálogo.
+
+---
+
+**Fluxo Alternativo:**
+
+1. Dados inválidos:
+
+   1. O sistema informa que os dados são inválidos.
+   2. O sistema retorna ao passo anterior.
+
+2. Falha ao salvar alterações:
+
+   1. O sistema informa erro ao salvar.
+   2. O sistema permite nova tentativa.
+
+---
+
+**Pós-condições:**
+O usuário acessa o sistema com sucesso e executa as funcionalidades conforme seu perfil (cliente ou prestador).
+<img width="1103" height="625" alt="image" src="https://github.com/user-attachments/assets/69942e61-7c49-4b8a-baea-226970ff045e" />
+
+
 ### 3.4.3 Diagrama de Classes 
 
 A Figura 2 mostra o diagrama de classes do sistema. A Matrícula deve conter a identificação do funcionário responsável pelo registro, bem com os dados do aluno e turmas. Para uma disciplina podemos ter diversas turmas, mas apenas um professor responsável por ela.
