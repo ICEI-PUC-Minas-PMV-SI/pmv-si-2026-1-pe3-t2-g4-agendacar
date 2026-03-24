@@ -12,12 +12,12 @@ O mercado de serviços automotivos ainda enfrenta dificuldades relacionadas à f
 
 Principais problemas:
 
-Dificuldade para agendar serviços: Muitos clientes não conseguem marcar horários de forma rápida e clara, dependendo de atendimento exclusivamente presencial.
-Falta de disponibilidade visível: Não há acesso fácil aos horários disponíveis em tempo real.
-Desorganização nas oficinas: Agendamentos manuais ou superficiais podem gerar atrasos, conflitos de horário e má gestão do fluxo de clientes.
-Perda de tempo: O cliente precisa se deslocar para várias oficinas até encontrar a peça ou conserto nescessário.
-Falta de transparência: Informações sobre preço, tempo de serviço e disponibilidade nem sempre são claras.
-Dificuldade em situações urgentes: Em casos de emergência, o cliente não sabe qual oficina pode atender mais rápido.
+- Dificuldade para agendar serviços: Muitos clientes não conseguem marcar horários de forma rápida e clara, dependendo de atendimento exclusivamente presencial.
+- Falta de disponibilidade visível: Não há acesso fácil aos horários disponíveis em tempo real.
+- Desorganização nas oficinas: Agendamentos manuais ou superficiais podem gerar atrasos, conflitos de horário e má gestão do fluxo de clientes.
+- Perda de tempo: O cliente precisa se deslocar para várias oficinas até encontrar a peça ou conserto nescessário.
+- Falta de transparência: Informações sobre preço, tempo de serviço e disponibilidade nem sempre são claras.
+- Dificuldade em situações urgentes: Em casos de emergência, o cliente não sabe qual oficina pode atender mais rápido.
 
 
 ## 1.2. Objetivos do Trabalho
