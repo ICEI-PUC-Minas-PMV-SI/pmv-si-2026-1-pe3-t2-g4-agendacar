@@ -34,19 +34,17 @@ O AgendaCar não irá abranger funcionalidades relacionadas ao controle de estoq
 
 | Código | Requisito Funcional (Funcionalidade) | Descrição | Prioridade |
 |--------------------|------------------------------------|----------------------------------------|------------|
-| RF1 | Acessos ao sistema |	O usuário deve realizar login utilizando e-mail e senha. | Essencial |
-| RF2 |	Gerenciamento de usuários	| O usuário deve manutenir seus dados cadastrais no sistema. | Essencial |
-| RF3	| Filtro de prestadores |	O cliente pode filtrar prestadores por categoria, localização e avaliação. | Essencial |
-| RF4	| Agendamento de serviços |	O cliente deve agendar a prestação de serviços no sistema. | Essencial |
-| RF5	| Gerenciamento da agenda |	O prestador deve gerenciar sua disponibilidade e quantidade de vagas na agenda. | Essencial |
-| RF6	| Gerenciamento de serviços e produtos |	O prestador deve catalogar no sistema seus serviços e produtos oferecidos. | Essencial |
-| RF7	| Alteração e cancelamento de agendamentos |	O usuário pode alterar/cancelar os agendamentos. | Essencial |
-| RF8	| Avaliação dos prestadores |	O cliente pode avaliar os prestadores de serviços. | Desejável |
-| RF9	| Emissão de relatórios |	O prestador pode emitir relatórios de agendamentos. | Desejável |
-| RF10	| Solicitação de pré-diagnóstico |	O cliente pode solicitar um pré-diagnóstico ao prestador antes do agendamento. | Desejável |
-| RF11	| Bloqueio de agendamentos |	O sistema deve bloquear conflitos de agendamentos. | Desejável |
-| RF12	| Tempo limite para cancelamento |	O usuário não pode alterar/cancelar um agendamento com menos de 24 horas de antecedência. | Desejável |
-| RF13	| Aprovação de orçamentos |	O prestador de serviços pode enviar orçamentos e solicitar a aprovação do cliente. | Opcional |
+| RF1 | Usuário realiza o login |	O usuário deve realizar login utilizando e-mail e senha. | Essencial |
+| RF2 |	Usuário gerencia seu cadastro	| O usuário deve manutenir seus dados cadastrais no sistema. | Essencial |
+| RF3	| Cliente filtra prestadores |	O cliente pode filtrar prestadores por categoria, localização e avaliação. | Essencial |
+| RF4	| Cliente agenda a prestação de serviços |	O cliente deve agendar a prestação de serviços no sistema. | Essencial |
+| RF5	| Prestador gerencia sua agenda |	O prestador deve gerenciar sua disponibilidade e quantidade de vagas na agenda. | Essencial |
+| RF6	| Prestador gerencia seus serviços e produtos |	O prestador deve catalogar no sistema seus serviços e produtos oferecidos. | Essencial |
+| RF7	| Usuário altera/cancela seus agendamentos |	O usuário pode alterar/cancelar os agendamentos. | Essencial |
+| RF8	| Cliente avalia prestadores |	O cliente pode avaliar os prestadores de serviços. | Desejável |
+| RF9	| Prestador emite relatório |	O prestador pode emitir relatórios de agendamentos. | Desejável |
+| RF10	| Cliente solicita pré-diagnóstico ao prestador |	O cliente pode solicitar um pré-diagnóstico ao prestador antes do agendamento. | Desejável |
+| RF11	| Prestador envia o orçamento |	O prestador de serviços pode enviar orçamentos e solicitar a aprovação do cliente. | Opcional |
 
 ### 3.3.2 Requisitos Não Funcionais
 
