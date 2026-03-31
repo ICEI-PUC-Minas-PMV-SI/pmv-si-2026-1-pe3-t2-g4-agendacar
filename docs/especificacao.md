@@ -292,6 +292,33 @@ a. Não existem dados disponíveis:
 
 Pós-condições: O relatório é exibido ao prestador de serviços.
 
+#### Enviar Orçamento (CSU-09)
+
+Sumário: Permite que o prestador de serviços envie o orçamento do serviço para o cliente.
+
+Ator Primário: Prestador de serviços.
+
+Pré-condições: 
+ * O prestador de serviços deve estar cadastrado e logado no sistema.
+ * Devem existir agendamentos registrados no sistema.
+
+Fluxo Principal:
+1. O prestador de serviços acessa os agendamentos.
+2. O prestador de seleciona o agendamento no qual deseja enviar o orçamento.
+3. O prestador de serviços seleciona a opção "Enviar orçamento".
+4. O sistema exibe o formulário para preenchimento das informações do orçamento.
+5. O prestador de serviços preenche os campos com dados do orçamento.
+6. O prestador de serviços clica em "Enviar".
+7. O sistema envia o orçamento para o cliente.
+
+Fluxo Alternativo (etapa 6)
+
+a. Campos não preenchidos:
+   1. O sistema informa que os dados são obrigatórios.
+   2. O sistema retorna ao passo 4.
+
+Pós-condições: O sistema salva o orçamento e envia para o cliente passando a permitir a aprovação.
+
 
 ---
 
