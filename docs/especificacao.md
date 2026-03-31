@@ -266,6 +266,32 @@ Pós-condições: As informações do usuário são alteradas com sucesso de aco
 
    1. O sistema informa erro ao salvar.
    2. O sistema permite nova tentativa.
+  
+#### Visualizar Relatórios (CSU-08)
+
+Sumário: Permite que o prestador de serviços visualize relatórios dos agendamentos realizados, a fim de auxiliar na análise e tomada de decisões relacionadas ao seu negócio.
+
+Ator Primário: Prestador de serviços.
+
+Pré-condições: 
+ * O prestador de serviços deve estar cadastrado e logado no sistema.
+ * Devem existir agendamentos registrados no sistema.
+
+Fluxo Principal:
+1. O prestador de serviços acessa o sistema.
+2. O prestador de serviços realiza login.
+3. O prestador de serviços seleciona a opção "Relatórios".
+4. O sistema exibe opções de filtros (tipo de serviço, período).
+5. O prestador de serviços seleciona os filtros desejados.
+6. O sistema gera e exibe o relatório solicitado.
+
+Fluxo Alternativo (etapa 6)
+
+a. Não existem dados disponíveis:
+   1. No passo 6, caso não existam dados para o filtro selecionado o sistema informa que não há dados para exibição.
+
+Pós-condições: O relatório é exibido ao prestador de serviços.
+
 
 ---
 
