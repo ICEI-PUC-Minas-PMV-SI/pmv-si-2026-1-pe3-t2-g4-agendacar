@@ -35,15 +35,15 @@ O AgendaCar não irá abranger funcionalidades relacionadas ao controle de estoq
 | Código | Requisito Funcional (Funcionalidade) | Descrição | Prioridade |
 |--------------------|------------------------------------|----------------------------------------|------------|
 | RF1 | Usuário realiza o login |	O usuário deve realizar login utilizando e-mail e senha. | Essencial |
-| RF2 |	Usuário gerencia seu cadastro	| O usuário deve manutenir seus dados cadastrais no sistema. | Essencial |
+| RF2 |	Usuário gerencia seu cadastro	| O usuário, seja cliente ou prestador, deve manutenir seus dados cadastrais no sistema. | Essencial |
 | RF3	| Cliente filtra prestadores |	O cliente pode filtrar prestadores por categoria, localização e avaliação. | Essencial |
 | RF4	| Cliente agenda a prestação de serviços |	O cliente deve agendar a prestação de serviços no sistema. | Essencial |
 | RF5	| Prestador gerencia sua agenda |	O prestador deve gerenciar sua disponibilidade e quantidade de vagas na agenda. | Essencial |
 | RF6	| Prestador gerencia seus serviços e produtos |	O prestador deve catalogar no sistema seus serviços e produtos oferecidos. | Essencial |
-| RF7	| Usuário altera/cancela seus agendamentos |	O usuário pode alterar/cancelar os agendamentos. | Essencial |
+| RF7	| Usuário gerencia seus agendamentos |	O usuário, seja cliente ou prestador, pode alterar/cancelar seus agendamentos. | Essencial |
 | RF8	| Cliente avalia prestadores |	O cliente pode avaliar os prestadores de serviços. | Desejável |
-| RF9	| Prestador emite relatório |	O prestador pode emitir relatórios de agendamentos. | Desejável |
-| RF10	| Cliente solicita pré-diagnóstico ao prestador |	O cliente pode solicitar um pré-diagnóstico ao prestador antes do agendamento. | Desejável |
+| RF9	| Prestador emite relatórios |	O prestador pode emitir relatórios de agendamentos para subsidiar análises de negócios. | Desejável |
+| RF10	| Cliente informa demanda ao prestador |	O cliente pode informar sua demanda antes do agendamento para verificar se o prestador é capaz de atendê-la. | Opcional |
 | RF11	| Prestador envia o orçamento |	O prestador de serviços pode enviar orçamentos e solicitar a aprovação do cliente. | Opcional |
 | RF12	| Usuário altera tema do sistema |	O usuário poderá alterar o tema escuro ou claro no sistema. | Opcional |
 
@@ -51,12 +51,12 @@ O AgendaCar não irá abranger funcionalidades relacionadas ao controle de estoq
 
 | Código | Requisito Não Funcional (Restrição) |
 |--------------------|------------------------------------|
-| RNF1 | A aplicação deve ser responsiva em diferentes dispositivos (computadores, tablets, smartphones). |
-| RNF2 | A aplicação deve apresentar interface simples e intuitiva. |
-| RNF3 |	A aplicação deve suportar aumentos no volume de requisições. |
-| RNF4 |	O sistema deve estar disponível 24/7. |
-| RNF5 |	Os carregamentos entre páginas e módulos devem ter apenas 3seg de carregamento. |
-| RNF6 |	O sistema deve respeitar as leis locais (LGPD). |
+| RNF1 | A interface se adapta a diferentes dispositivos sem perda das principais funcionalidades. |
+| RNF2 | As principais funcionalidades devem ser acessíveis em até 5 cliques a partir da tela inicial. |
+| RNF3 |	O sistema deve suportar um aumento de 50% no volume de requisições por segundo em relação à média dos últimos 30 dias. |
+| RNF4 |	O sistema permanece disponível 24/7, com disponibilidade mínima de 99,0% ao mês, exceto em manutenções programadas. |
+| RNF5 |	Os carregamentos entre páginas e módulos ocorrem em até 3 segundos, em condições normais de uso. |
+| RNF6 |	O sistema trata dados pessoais em conformidade com a LGPD, garantindo coleta, uso e armazenamento adequados. |
 
 ### 3.3.3 Usuários 
 
