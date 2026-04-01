@@ -196,9 +196,10 @@ Ator Primário: Prestador de serviços
 
 Ator Secundário: Cliente
 
-Pré-condições: 
-•	O prestador de serviços deve estar logado no sistema.
-•	Deve existir um agendamento registrado pelo cliente que receberá o orçamento.
+Pré-condições:
+
+*	O prestador de serviços deve estar logado no sistema.
+*	Deve existir um agendamento registrado pelo cliente que receberá o orçamento.
 
 Fluxo Principal: 
 1.	O prestador realiza login utilizando e-mail e senha.
@@ -216,7 +217,38 @@ Pós-condições: O sistema salva os dados de orçamento cadastrados pelo presta
 
 ----
 
-#### Solicitar agendamento (CSU-09)
+#### Aprovar orçamento (CSU-09)
+
+Sumário: O cliente pode, após um orçamento enviado pelo prestador de serviço, aprovar ou resusar o orçamento do serviço a ser realizado.
+
+Ator Primário: Cliente
+
+Ator Secundário: Prestador de serviços
+
+Pré-condições:
+
+*	O cliente deve estar logado no sistema.
+*	Deve existir um orçamento registrado pelo prestador de serviço.
+
+Fluxo Principal: 
+1.	O cliente realiza login utilizando e-mail e senha.
+2.	O sistema notifica o cliente que existe um orçamento aguardando aprovação.
+3.	Através da notificação o cliente acessa a tela 'Aprovação de Orçamento'.
+4.	O sistema exibe os dados do orçamento cadastrado pelo prestador de serviços.
+5.	O cliente aprova o orçamento.
+6.	O sistema envia a aprovação para o prestador de serviços.
+
+Fluxo Alternativo (etapa 5):
+1.	Caso o cliente recuse o orçamento.
+2.	O sistema solicita ao cliente o motivo da recusa do orçamento.
+3.	O cliente preenche o campo de motivação da resuca do orçamento.
+4.	O sistema envia a recusa junto com o motivo para o prestador de serviço.
+
+Pós-condições: O sistema atualiza o status do orçamento aprovado ou recusado pelo cliente, em caso de recusa também salva o motivo da recusa.
+
+----
+
+#### Solicitar agendamento (CSU-10)
 
 Sumário: O cliente filtra e seleciona um prestador no sistema e solicita o agendamento na data e horário de seu interesse.
 
@@ -245,7 +277,7 @@ Pós-condições: O prestador recebe a solicitação do cliente e escolhe aceita
 
 ----
 
-#### Alterar/cancelar agendamento (CSU-10)
+#### Alterar/cancelar agendamento (CSU-11)
 
 Sumário: A qualquer momento, o usuário (cliente ou prestador) pode alterar ou cancelar os agendamentos realizados/recebidos no sistema.
 
@@ -277,7 +309,7 @@ Pós-condições: O usuário envolvido no agendamento é sinalizado sobre o canc
 
 ----
 
-#### Gerenciar solicitação de agendamento (prestador de serviços) (CSU-11)
+#### Gerenciar solicitação de agendamento (prestador de serviços) (CSU-12)
 
 Sumário: O prestador recebe as solicitações de agendamentos dos clientes, podendo aceitar, recusar ou propor uma nova data/horário para realizar o atendimento
 
@@ -307,7 +339,7 @@ Pós-condições: O sistema informa ao prestador que um percentual de recusas el
 
 ----
 
-#### Avaliar prestador (CSU-12)
+#### Avaliar prestador (CSU-13)
 
 Sumário: Após a realização de um serviço, o cliente registra uma nota e um comentário sobre a experiência do atendimento realizado pelo prestador, contribuindo para o ranking de avaliação dos prestadores no sistema.
 
@@ -328,7 +360,7 @@ Pós-condições: O prestador recebe uma notificação de que foi avaliado pelo 
 
 ----
 
-#### Visualizar relatórios (CSU-13)
+#### Visualizar relatórios (CSU-14)
 
 Sumário: Permite que o prestador de serviços visualize relatórios dos agendamentos realizados, a fim de auxiliar na análise e tomada de decisões relacionadas ao seu negócio.
 
@@ -337,8 +369,9 @@ Ator Primário: Prestador de serviços
 Ator Secundário: Não se aplica. 
 
 Pré-condições: 
-•	O prestador de serviços deve estar logado no sistema.
-•	Deve existir pelo menos um agendamento registrado para o prestador.
+
+*	O prestador de serviços deve estar logado no sistema.
+*	Deve existir pelo menos um agendamento registrado para o prestador.
 
 Fluxo Principal:
 1.	O prestador de serviços acessa o sistema
@@ -358,7 +391,7 @@ Pós-condições: O prestador pode exportar ou imprimir o relatório exibido na 
 
 ----
 
-#### Alterar tema (CSU-14)
+#### Alterar tema (CSU-15)
 
 Sumário: A qualquer momento, na tela inicial do sistema, o usuário (cliente ou prestador) pode alterar o tema da aplicação entre claro ou escuro.
 
