@@ -505,6 +505,34 @@ Fluxo Principal:
 
 Pós-condições: O tema será mantido até que o usuário realize uma nova alteração.
 
+### 3.4.3 Diagrama de Classes 
+
+A Figura 2 apresenta o diagrama de classes do sistema AgendaCar. A estrutura é centralizada na classe _Usuario_, da qual derivam por herança as especializações _Cliente_ e _Prestador_. O _Prestador_ possui composição com _Agenda_ e _ItemCatalogo_, refletindo que esses elementos fazem parte intrínseca do seu perfil no sistema. O _Agendamento_ conecta _Cliente_ e _Prestador_, registrando a solicitação de serviço e o ciclo de vida do atendimento, da confirmação à conclusão. A partir de um agendamento concluído, o _Cliente_ pode registrar uma _Avaliacao_, influenciando a reputação do _Prestador_ na plataforma. O fluxo de orçamento é representado pelas classes _Orcamento_ e _ItemCatalogoOrcamento_, este sendo derivado por herança da classe _ItemCatalogo_, que detalham a proposta enviada ao cliente, e pela _OrdemDeServico_, gerada quando o orçamento é aprovado e o serviço é formalmente autorizado.
+
+#### Figura 2: Diagrama de Classes do Sistema.
+ 
+![image](https://github.com/AndersonBernardoS/pmv-si-2026-1-pe3-t2-g4/blob/main/img/DiagramaDeClasses.png?raw=true)
+
+### 3.4.4 Descrição das Classes
+
+| # | Nome | Descrição |
+|---|------|-----------|
+| 1 | Usuario | Classe base que centraliza os dados e comportamentos comuns a todos os usuários do sistema, como autenticação, gerenciamento de cadastro e preferência de tema. |
+| 2 | Cliente | Especialização de Usuario que representa o proprietário de veículo. Responsável por buscar prestadores, solicitar agendamentos, solicitar orçamentos e avaliar os serviços recebidos. |
+| 3 | Prestador | Especialização de Usuario que representa o estabelecimento automotivo. Responsável por gerenciar sua agenda, catálogo de serviços e produtos, solicitações de agendamento, orçamentos e relatórios. |
+| 4 | Agenda | Registra a disponibilidade do prestador, definindo os dias, horários de atendimento e a quantidade de vagas simultâneas disponíveis para agendamento. |
+| 5 | Agendamento | Representa a solicitação de serviço feita pelo cliente a um prestador, registrando data, horário, placa do veículo, descrição da demanda e o status atual do atendimento. |
+| 6 | ItemCatalogo | Representa os serviços e produtos oferecidos pelo prestador, contendo nome, descrição, preço, tipo (serviço ou produto) e situação (ativo/inativo). |
+| 7 | Avaliacao | Registra a experiência do cliente após a conclusão de um atendimento, por meio de uma nota e um comentário opcional, impactando a reputação do prestador na plataforma. |
+| 8 | Orcamento | Representa a proposta de valor enviada pelo prestador ao cliente para um determinado agendamento, contendo descrição dos serviços, valor total e status de aprovação. |
+| 9 | ItemCatalogoOrcamento | Especialização de ItemCatalogo que representa cada item individualmente dentro de um orçamento, com nome, tipo, descrição, preço unitário, quantidade e valor total, compondo o detalhamento da proposta enviada ao cliente. |
+| 10 | OrdemDeServico | Documento gerado a partir de um orçamento aprovado, formalizando a execução do serviço com descrição, valor, responsável, datas de início e fim e status de andamento. |
+
+
+
+
+# ATENÇÃO: EXCLUIR DEPOIS DE CORRIGIR E VERIFICAR DAQUI PRA BAIXO
+#
 
 ### 3.4.3 Diagrama de Classes 
 
