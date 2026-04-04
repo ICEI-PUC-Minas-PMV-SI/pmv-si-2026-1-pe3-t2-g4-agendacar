@@ -68,14 +68,15 @@ O AgendaCar não irá abranger funcionalidades relacionadas ao controle de estoq
 ## 3.4 Modelagem do Sistema
 
 ### 3.4.1 Diagrama de Casos de Uso
-Como observado no diagrama de casos de uso da Figura 1, o cliente poderá realizar a busca por prestadores e solicitar agendamentos de serviços, enquanto o prestador de serviços terá a responsabilidade de gerenciar as solicitações recebidas, podendo aceitar, recusar ou propor novos horários. Além disso, o sistema permite que o cliente realize a avaliação técnica e de atendimento após a conclusão do serviço, garantindo a transparência e a confiabilidade da plataforma para ambos os usuários.
 
-#### Figura 1: Diagrama de Casos de Uso do Sistema.
+O diagrama de casos de uso apresenta, de forma visual, as funcionalidades oferecidas pelo sistema a partir da perspectiva dos atores envolvidos. Além de descrever as funcionalidades, também evidencia as interações entre usuários (como cliente e prestador de serviços) e o sistema, permitindo compreender os principais objetivos e serviços disponíveis, bem como os limites do sistema.
 
-![CSU](../img/csu.png)
+#### Figura 1: Diagrama de Casos de Uso do Sistema
 
-<img width="1363" height="972" alt="image" src="https://github.com/user-attachments/assets/e5881b4e-aed8-43f7-b550-0c11870a9e19" />
+<img width="1141" height="548" alt="diagrama_casos_de_uso" src="https://github.com/user-attachments/assets/78b49fae-24f9-487f-ae94-39bb2f3b97bd" /> <br>
 
+
+**Obs**.: Para manter a clareza visual do diagrama, nem todas as relações de «include» foram explicitamente representadas. Entretanto, essas dependências estão devidamente descritas nas pré-condições dos respectivos casos de uso, garantindo a consistência da modelagem.
 
 ### 3.4.2 Descrições de Casos de Uso
 
@@ -530,26 +531,3 @@ A Figura 2 apresenta o diagrama de classes do sistema AgendaCar. A estrutura é 
 
 
 
-
-# ATENÇÃO: EXCLUIR DEPOIS DE CORRIGIR E VERIFICAR DAQUI PRA BAIXO
-#
-
-### 3.4.3 Diagrama de Classes 
-
-A Figura 2 mostra o diagrama de classes do sistema. A Matrícula deve conter a identificação do funcionário responsável pelo registro, bem com os dados do aluno e turmas. Para uma disciplina podemos ter diversas turmas, mas apenas um professor responsável por ela.
-
-#### Figura 2: Diagrama de Classes do Sistema.
- 
-![image](https://github.com/user-attachments/assets/abc7591a-b46f-4ea2-b8f0-c116b60eb24e)
-
-
-### 3.4.4 Descrições das Classes 
-
-| # | Nome | Descrição |
-|--------------------|------------------------------------|----------------------------------------|
-| 1	|	Aluno |	Cadastro de informações relativas aos alunos. |
-| 2	| Curso |	Cadastro geral de cursos de aperfeiçoamento. |
-| 3 |	Matrícula |	Cadastro de Matrículas de alunos nos cursos. |
-| 4 |	Turma |	Cadastro de turmas.
-| 5	|	Professor |	Cadastro geral de professores que ministram as disciplinas. |
-| ... |	... |	... |
