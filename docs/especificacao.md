@@ -512,7 +512,7 @@ A Figura 2 apresenta o diagrama de classes do sistema AgendaCar. A estrutura é 
 
 #### Figura 2: Diagrama de Classes do Sistema.
  
-![image]([img/DiagramaDeClasses.png](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t2-g4-agendacar/blob/main/img/DiagramaDeClasses.png?raw=true))
+![image](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t2-g4-agendacar/blob/main/img/DiagramaDeClasses.png?raw=true)
 
 ### 3.4.4 Descrição das Classes
 
