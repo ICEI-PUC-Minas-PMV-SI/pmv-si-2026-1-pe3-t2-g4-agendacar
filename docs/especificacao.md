@@ -508,11 +508,11 @@ Pós-condições: O tema será mantido até que o usuário realize uma nova alte
 
 ### 3.4.3 Diagrama de Classes 
 
-A Figura 2 apresenta o diagrama de classes do sistema AgendaCar. A estrutura é centralizada na classe _Usuario_, da qual derivam por herança as especializações _Cliente_ e _Prestador_. O _Prestador_ possui composição com _Agenda_ e _ItemCatalogo_, refletindo que esses elementos fazem parte intrínseca do seu perfil no sistema. O _Agendamento_ conecta _Cliente_ e _Prestador_, registrando a solicitação de serviço e o ciclo de vida do atendimento, da confirmação à conclusão. A partir de um agendamento concluído, o _Cliente_ pode registrar uma _Avaliacao_, influenciando a reputação do _Prestador_ na plataforma. O fluxo de orçamento é representado pelas classes _Orcamento_ e _ItemCatalogoOrcamento_, este sendo derivado por herança da classe _ItemCatalogo_, que detalham a proposta enviada ao cliente, e pela _OrdemDeServico_, gerada quando o orçamento é aprovado e o serviço é formalmente autorizado.
+A Figura 2 apresenta o diagrama de classes do sistema AgendaCar. A estrutura é centralizada na classe _Usuario_, da qual derivam por herança as especializações _Cliente_ e _Prestador_. O _Prestador_ possui composição com _Agenda_ e _ItemCatalogo_, refletindo que esses elementos fazem parte intrínseca do seu perfil no sistema. O _Agendamento_ conecta _Cliente_ e _Prestador_, registrando a solicitação de serviço e o ciclo de vida do atendimento, da confirmação à conclusão. A partir de um agendamento concluído, o _Cliente_ pode registrar uma _Avaliacao_, influenciando a reputação do _Prestador_ na plataforma. O fluxo de orçamento é representado pelas classes _Orcamento_ e _ItemCatalogoOrcamento_, este sendo derivado por herança da classe _ItemCatalogo_, que detalham a proposta enviada ao cliente.
 
 #### Figura 2: Diagrama de Classes do Sistema.
  
-![image](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t2-g4-agendacar/blob/main/img/DiagramaDeClasses.png?raw=true)
+![image](img/DiagramaDeClasses.png)
 
 ### 3.4.4 Descrição das Classes
 
@@ -527,7 +527,4 @@ A Figura 2 apresenta o diagrama de classes do sistema AgendaCar. A estrutura é 
 | 7 | Avaliacao | Registra a experiência do cliente após a conclusão de um atendimento, por meio de uma nota e um comentário opcional, impactando a reputação do prestador na plataforma. |
 | 8 | Orcamento | Representa a proposta de valor enviada pelo prestador ao cliente para um determinado agendamento, contendo descrição dos serviços, valor total e status de aprovação. |
 | 9 | ItemCatalogoOrcamento | Especialização de ItemCatalogo que representa cada item individualmente dentro de um orçamento, com nome, tipo, descrição, preço unitário, quantidade e valor total, compondo o detalhamento da proposta enviada ao cliente. |
-| 10 | OrdemDeServico | Documento gerado a partir de um orçamento aprovado, formalizando a execução do serviço com descrição, valor, responsável, datas de início e fim e status de andamento. |
-
-
 
