@@ -6,7 +6,8 @@
 
 ![Persona - Nathalia](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t2-g4-agendacar/blob/main/img/persona-nathalia-enfermeira.jpg)
 
-<img width="326" height="689" alt="image" src="https://github.com/user-attachments/assets/4aa6165a-c65f-4abc-bab9-7725bbd587ca" />
+<img width="466" height="864" alt="image" src="https://github.com/user-attachments/assets/d9d79f1e-2ac7-4639-a08c-cff25c3a1a0b" />
+
 
 
 ## 4.2 Mapa de Empatia
