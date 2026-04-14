@@ -10,7 +10,7 @@
 
 ![Persona - Lucas Ferreira](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t2-g4-agendacar/blob/main/img/PersonaLucasFerreira.png)
 
-![persona braian](https://github.com/user-attachments/assets/3974e775-c9f9-499f-baf7-e7a01a4a5fe3)
+![persona patricia](https://github.com/user-attachments/assets/478056ba-5026-4bcc-9b71-69349d44c7fc)
 
 
 ## 4.2 Mapa de Empatia
