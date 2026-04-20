@@ -51,7 +51,7 @@ O AgendaCar não irá abranger funcionalidades relacionadas ao controle de estoq
 
 | Código | Requisito Não Funcional (Restrição) |
 |--------------------|------------------------------------|
-| RNF1 | A interface se adapta a diferentes dispositivos sem perda das principais funcionalidades. |
+| RNF1 | A interface se adapta a larguras de tela de 360px a 1920px, sem perda de funcionalidade. |
 | RNF2 | As principais funcionalidades devem ser acessíveis em até 5 cliques a partir da tela inicial. |
 | RNF3 |	O sistema deve suportar um aumento de 50% no volume de requisições por segundo em relação à média dos últimos 30 dias. |
 | RNF4 |	O sistema permanece disponível 24/7, com disponibilidade mínima de 99,0% ao mês, exceto em manutenções programadas. |
@@ -73,10 +73,8 @@ O diagrama de casos de uso apresenta, de forma visual, as funcionalidades oferec
 
 #### Figura 1: Diagrama de Casos de Uso do Sistema
 
-<img width="1141" height="548" alt="diagrama_casos_de_uso" src="https://github.com/user-attachments/assets/78b49fae-24f9-487f-ae94-39bb2f3b97bd" /> <br>
+<img width="570" height="892" alt="diagrama_casos_uso_" src="https://github.com/user-attachments/assets/bd8a6386-0811-4394-a524-559af0f37c2b" />
 
-
-**Obs**.: Para manter a clareza visual do diagrama, nem todas as relações de «include» foram explicitamente representadas. Entretanto, essas dependências estão devidamente descritas nas pré-condições dos respectivos casos de uso, garantindo a consistência da modelagem.
 
 ### 3.4.2 Descrições de Casos de Uso
 
