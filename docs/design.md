@@ -305,6 +305,8 @@ Nova rodada de testes:
 
 [Relatorio_de_Testes_com_Usuario Cliente - avaliador Agner.pdf](https://github.com/user-attachments/files/28669898/Relatorio_de_Testes_com_Usuario.Cliente.-.avaliador.Agner.pdf)
 
+[Relatório de Testes com Usuário Cliente-Anderson.pdf](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t2-g4-agendacar/blob/main/docs/pdf/Relatorio_Teste_Usuario_Cliente-IMSS-Anderson.pdf)
+
 
 ## 4.5 Avaliação Heurística
 
