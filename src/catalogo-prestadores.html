@@ -593,7 +593,25 @@
             font-size: 15px; 
         }
 
-
+/* ======== ESTILOS DA BARRA DE PESQUISA DO CATÁLOGO ======== */
+      .search-bar { 
+        display: flex; align-items: center; 
+        background: rgba(255,255,255,0.8); 
+        border: 1px solid rgba(255,255,255,0.6); 
+        border-radius: 12px; padding: 5px; 
+        width: 100%; 
+        box-shadow: inset 0 2px 5px rgba(0,0,0,0.02), 0 4px 15px rgba(0,0,0,0.05);
+      }
+      .search-bar i.fa-magnifying-glass { color: #12368a; margin: 0 15px; font-size: 20px; opacity: 0.7;}
+      .search-bar input { flex: 1; border: none; outline: none; font-size: 16px; padding: 12px 0; background: transparent; color: #2d3748;}
+      .btn-search { 
+        background: linear-gradient(135deg, #f47920, #ff9040); color: white; 
+        border: 1px solid rgba(255,255,255,0.4); padding: 10px 24px; 
+        border-radius: 8px; font-size: 16px; font-weight: 700; 
+        cursor: pointer; display: flex; align-items: center; gap: 10px; 
+        transition: all 0.3s; box-shadow: 0 4px 10px rgba(244, 121, 32, 0.3);
+      }
+      .btn-search:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(244, 121, 32, 0.5); }
     </style>
   </head>
   <body>
@@ -668,6 +686,17 @@
                 <span id="contadorResultados">4</span> prestadores encontrados
             </div>
         </div>
+        <div class="page-header">
+            </div>
+
+        <div class="search-bar-container" style="width: 100%; margin-bottom: 30px;">
+            <div class="search-bar">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="inputBuscaCatalogo" placeholder="Buscar por prestadores, serviços (ex: motor, freio)..." onkeypress="if(event.key === 'Enter') realizarBuscaCatalogo()">
+                <button class="btn-search" onclick="realizarBuscaCatalogo()">Buscar</button>
+            </div>
+        </div>
+        <div class="catalogo-grid" id="catalogoGrid"></div>
 
         <div class="catalogo-grid" id="catalogoGrid"></div>
         
