@@ -41,6 +41,9 @@ Seguem abaixo as avaliações heurísticas realizadas individualmente por cada i
 
 Segue abaixo um relatório consolidado das avaliações heurísticas realizadas pelo grupo.
 
+[Relatório Consolidado da Avaliação Heurística - AGENDACAR.pdf](https://github.com/user-attachments/files/28690204/Relatorio.Consolidado.da.Avaliacao.Heuristica.-.AGENDACAR.pdf)
+
+
 
 
 
