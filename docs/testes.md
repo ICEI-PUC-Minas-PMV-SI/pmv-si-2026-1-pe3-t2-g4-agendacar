@@ -20,7 +20,7 @@ Na etapa de design os testes com usuários foram realizados utilizando os protó
 
 [Relatório de Testes com Usuário Cliente-Anderson.pdf](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t2-g4-agendacar/blob/main/docs/pdf/Relatorio_Teste_Usuario_Cliente-IMSS-Anderson.pdf)
 
-[Relatório de Testes com Usuário Cliente - Ricardo Morais.pdf](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t2-g4-agendacar/blob/main/docs/pdf/Relatório de Testes com Usuário Cliente - Ricardo Morais.pdf)
+[Relatório de Testes com Usuário Cliente - Ricardo Morais.pdf](./docs/pdf/Relat%C3%B3rio%20de%20Testes%20com%20Usu%C3%A1rio%20Cliente%20-%20Ricardo%20Morais.pdf)
 
 ### Avaliações heurísticas individuais
 
