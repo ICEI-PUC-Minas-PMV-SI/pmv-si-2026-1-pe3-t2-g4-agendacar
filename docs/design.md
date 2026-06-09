@@ -318,4 +318,4 @@ Nova rodada de testes:
 
 [Avaliação Heurística - Anderson.pdf](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t2-g4-agendacar/blob/main/docs/pdf/Avaliação_Heurística-Anderson.pdf)
 
-[Avaliação Heurística - Tiago.pdf](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t2-g4-agendacar/blob/main/docs/pdf/Relatório-avaliação-heuristica-tiago-nocce.pd)
+[Avaliação Heurística - Tiago.pdf](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t2-g4-agendacar/blob/main/docs/pdf/Relatório-avaliação-heuristica-tiago-nocce.pdf)
