@@ -317,3 +317,5 @@ Nova rodada de testes:
 [Relatório da Avaliação heurística - Cliente - avaliador Agner.pdf](https://github.com/user-attachments/files/28670519/Relatorio.da.Avaliacao.heuristica.-.Cliente.-.avaliador.Agner.pdf)
 
 [Avaliação Heurística - Anderson.pdf](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t2-g4-agendacar/blob/main/docs/pdf/Avaliação_Heurística-Anderson.pdf)
+
+[Avaliação Heurística - Tiago.pdf](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2026-1-pe3-t2-g4-agendacar/blob/main/docs/pdf/Relatório-avaliação-heuristica-tiago-nocce.pdf)
