@@ -1,63 +1,67 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AgendaCar - Solicitar Serviço</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='0' y='4' width='5' height='5' rx='2.5' fill='%23f47920'/%3E%3Crect x='0' y='13' width='5' height='5' rx='2.5' fill='%2312368a'/%3E%3Cg transform='skewX(-10) translate(6, 1)'%3E%3Crect x='0' y='0' width='25' height='30' rx='4' fill='%2312368a'/%3E%3Crect x='4' y='3' width='17' height='5' rx='2' fill='%23ffffff'/%3E%3Crect x='4' y='12' width='17' height='5' rx='2' fill='%23ffffff'/%3E%3Crect x='4' y='21' width='17' height='5' rx='2' fill='%23ffffff'/%3E%3C/g%3E%3C/svg%3E">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
 
     <style>
-        /* CSS Específico da página de Agendamento/Serviço */
-        .solicitacao-wrapper { width: 100%; max-width: 1000px; background: white; border-radius: 12px; padding: 40px; box-shadow: 0 8px 30px rgba(0,0,0,0.05); border: 1px solid #e5e7eb; }
-        .page-title { text-align: center; font-size: 26px; color: var(--text-blue); font-weight: 800; margin-bottom: 25px; }
+        .solicitacao-wrapper { width: 100%; max-width: 1000px; }
+        .content-body { background: white; border-radius: 12px; padding: 40px; box-shadow: 0 8px 30px rgba(0,0,0,0.05); border: 1px solid #e5e7eb; }
 
-        .service-summary { display: flex; justify-content: space-between; align-items: center; padding: 18px; border: 2px solid rgba(11, 77, 143, 0.2); border-radius: 8px; margin-bottom: 28px; background: #fafafa;}
-        .service-info { display: flex; gap: 14px; align-items: center; }
-        .service-info img { width: 90px; height: 90px; object-fit: cover; border-radius: 50%; border: 2px solid var(--primary-orange);}
+        /* Card do prestador */
+        .card-prestador-container { margin-bottom: 28px; }
+        .card-prestador { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 22px; border: 2px solid rgba(11,77,143,0.15); border-radius: 12px; background: #fafafa; position: relative; }
+        .card-prestador img { width: 90px; height: 90px; object-fit: cover; border-radius: 50%; border: 2px solid var(--primary-orange); margin-bottom: 12px; }
+        .card-prestador h3 { margin: 0 0 4px 0; color: var(--text-blue); font-size: 20px; font-weight: 800; }
+        .card-prestador span { font-size: 13px; color: var(--primary-orange); font-weight: 700; margin-bottom: 10px; }
+        .card-prestador p { font-size: 14px; color: #555; line-height: 1.5; margin: 0; }
 
-        .section { margin-bottom: 25px; }
-        .section h4 { margin: 0 0 12px 0; color: #222; font-weight: 700; font-size: 18px; border-bottom: 2px solid #e5e7eb; padding-bottom: 8px;}
+        /* Formulário */
+        .form-input { margin-bottom: 18px; }
+        .label-orcamento { display: block; font-weight: 700; margin-bottom: 6px; color: #1f2937; font-size: 14px; }
+        .texto-orcamento { padding: 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 14px; width: 100%; box-sizing: border-box; background: #f9fafb; transition: 0.3s; font-family: 'Roboto', sans-serif; }
+        .texto-orcamento:focus { border-color: var(--primary-blue); outline: none; background: white; }
+        textarea.texto-orcamento { min-height: 100px; resize: vertical; }
 
-        /* Inputs */
-        .form-row { display:flex; gap:12px; margin-bottom:14px; flex-wrap: wrap;}
-        .form-col { flex: 1; display:flex; flex-direction:column; min-width: 200px;}
-        label { font-weight:700; margin-bottom:6px; color:#1f2937; font-size: 14px;}
-        input[type=text], textarea { padding:12px; border:1px solid #d1d5db; border-radius:8px; font-size:14px; width:100%; box-sizing:border-box; background: #f9fafb; transition: 0.3s;}
-        input[type=text]:focus, textarea:focus { border-color: var(--primary-blue); outline: none; background: white;}
-        textarea { min-height:100px; resize:vertical;}
+        .form-row { display: flex; gap: 14px; flex-wrap: wrap; }
+        .form-row .form-input { flex: 1; min-width: 150px; }
 
-        /* Calendário Customizado */
-        .date-picker { display: flex; align-items: center; gap: 12px; margin-bottom: 15px;}
-        .nav-day { background: white; border: 1px solid #d1d5db; width: 36px; height: 36px; border-radius: 8px; cursor: pointer; transition: 0.2s; font-weight: bold; color: var(--text-blue);}
+        /* Seção de seleção de datas */
+        .section { margin-bottom: 22px; }
+        .section h4 { margin: 0 0 12px 0; color: #222; font-weight: 700; font-size: 16px; border-bottom: 2px solid #e5e7eb; padding-bottom: 8px; }
+
+        .date-picker { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+        .nav-day { background: white; border: 1px solid #d1d5db; width: 36px; height: 36px; border-radius: 8px; cursor: pointer; transition: 0.2s; font-weight: bold; color: var(--text-blue); flex-shrink: 0; }
         .nav-day:hover { background: #e5e7eb; }
-        .date-list { display: flex; gap: 10px; overflow-x: auto; padding: 6px; padding-bottom: 10px;}
+        .date-list { display: flex; gap: 10px; overflow-x: auto; padding: 6px; padding-bottom: 10px; }
         .date-list::-webkit-scrollbar { height: 6px; }
         .date-list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-
-        .date-box { min-width: 80px; background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px; text-align: center; cursor: pointer; transition: 0.3s;}
+        .date-box { min-width: 80px; background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px; text-align: center; cursor: pointer; transition: 0.3s; }
         .date-box .day { font-weight: 700; color: #333; }
-        .date-box .date { color: #7b8aa4; font-size: 12px; margin-top: 4px;}
-        .date-box:hover:not(.disabled) { border-color: var(--primary-orange); transform: translateY(-2px);}
+        .date-box .date { color: #7b8aa4; font-size: 12px; margin-top: 4px; }
+        .date-box:hover:not(.disabled) { border-color: var(--primary-orange); transform: translateY(-2px); }
         .date-box.selected { background: #fff3ea; border: 2px solid var(--primary-orange); }
-        .date-box.disabled { opacity: 0.45; cursor: not-allowed; background: #f3f4f6;}
+        .date-box.disabled { opacity: 0.45; cursor: not-allowed; background: #f3f4f6; }
 
-        /* Horários */
         .time-slots { display: flex; flex-wrap: wrap; gap: 12px; }
-        .time-slot { padding: 10px 18px; border: 1px solid #e6e6e6; border-radius: 8px; cursor: pointer; background: #fff; color: #333; font-weight: 700; transition: 0.3s;}
+        .time-slot { padding: 10px 18px; border: 1px solid #e6e6e6; border-radius: 8px; cursor: pointer; background: #fff; color: #333; font-weight: 700; transition: 0.3s; }
         .time-slot:hover { border-color: var(--primary-orange); }
         .time-slot.active-for-assign { background: var(--primary-orange); color: white; border-color: var(--primary-orange); }
-        .hint-msg { color:#6b7280; font-size:14px; }
+        .hint-msg { color: #6b7280; font-size: 14px; }
 
-        .confirm-request { margin-top: 20px; width: 100%; background: linear-gradient(135deg, var(--primary-orange), #ff9040); color: white; border: none; padding: 16px; border-radius: 8px; font-size: 18px; font-weight: 800; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 15px rgba(244, 121, 32, 0.2);}
-        .confirm-request:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(244, 121, 32, 0.4);}
+        .botao-solicitar { margin-top: 24px; }
+        .botao-solicitar button { width: 100%; background: linear-gradient(135deg, var(--primary-orange), #ff9040); color: white; border: none; padding: 16px; border-radius: 8px; font-size: 18px; font-weight: 800; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 15px rgba(244,121,32,0.2); }
+        .botao-solicitar button:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(244,121,32,0.4); }
 
         @media (max-width: 768px) {
-            .service-summary { flex-direction: column; align-items: flex-start; }
-            .date-picker { flex-direction: column; align-items: stretch;}
-            .nav-day { align-self: center; transform: rotate(90deg); margin: 5px 0;}
+            .content-body { padding: 24px; }
+            .date-picker { flex-direction: column; align-items: stretch; }
+            .nav-day { align-self: center; transform: rotate(90deg); margin: 5px 0; }
         }
     </style>
 </head>
@@ -66,7 +70,7 @@
 
     <header>
         <a href="home.html" class="Logo">
-            <img src="img/HLogo.png" alt="Logo AgendaCar" onerror="this.style.display='none'">
+            <img src="img/HLogo.png" alt="Logo AgendaCar" onerror="this.style.display='none'" />
         </a>
         <button class="btn-header">Entrar / Cadastrar</button>
     </header>
@@ -74,11 +78,12 @@
     <div class="main-container">
         <aside class="sidebar">
             <div class="menu-services">
-                <button class="service-btn" data-categoria="Mecânica Geral"><i class="fa-solid fa-wrench"></i> Mecânica Geral</button>
-                <button class="service-btn" data-categoria="Motores"><i class="fa-solid fa-cogs"></i> Motores</button>
-                <button class="service-btn" data-categoria="Suspensão"><i class="fa-solid fa-car-burst"></i> Suspensão</button>
-                <button class="service-btn" data-categoria="Lanternagem/Pintura"><i class="fa-solid fa-spray-can"></i> Lanternagem/Pintura</button>
-                <button class="service-btn" data-categoria="Outros Serviços"><i class="fa-solid fa-toolbox"></i> Outros serviços</button>
+                <button class="service-btn" onclick="window.location.href='catalogo-prestadores.html?categoria=Mecânica Geral'"><i class="fa-solid fa-wrench"></i> Mecânica Geral</button>
+                <button class="service-btn" onclick="window.location.href='catalogo-prestadores.html?categoria=Motores'"><i class="fa-solid fa-cogs"></i> Motores</button>
+                <button class="service-btn" onclick="window.location.href='catalogo-prestadores.html?categoria=Suspensão'"><i class="fa-solid fa-car-burst"></i> Suspensão</button>
+                <button class="service-btn" onclick="window.location.href='catalogo-prestadores.html?categoria=Lanternagem/Pintura'"><i class="fa-solid fa-spray-can"></i> Lanternagem/Pintura</button>
+                <button class="service-btn" onclick="window.location.href='catalogo-prestadores.html?categoria=Outros Serviços'"><i class="fa-solid fa-toolbox"></i> Outros serviços</button>
+                <button class="service-btn" onclick="window.location.href='meus-agendamentos.html'"><i class="fa-solid fa-calendar-check"></i> Meus Agendamentos</button>
                 <button class="service-btn" id="btn-gerenciar-perfil" style="display:none" onclick="window.location.href='gerenciamento-perfil.html'">
                     <i class="fa-solid fa-user-gear"></i> Gerenciar Perfil
                 </button>
@@ -95,52 +100,93 @@
         </aside>
 
         <main class="content">
+            <h1>Solicitação de Serviço</h1>
             <div class="solicitacao-wrapper">
-                <div class="page-title">Solicitar Serviço</div>
-
-                <div class="service-summary">
-                    <div class="service-info">
-                        <img id="prestadorImg" src="img/Design/placeholder.png" alt="prestador" onerror="this.style.display='none'">
-                        <div>
-                            <div id="prestadorNome" style="color:var(--text-blue); font-weight:800; font-size: 18px;">Mecânica Geral</div>
-                            <div id="prestadorCategoria" style="font-weight:700; color:#555;">Prestador Autônomo</div>
+                <div class="content-body">
+                    <!-- Card do prestador -->
+                    <div class="card-prestador-container">
+                        <div class="card-prestador">
+                            <img src="img/Design/placeholder.png" alt="Imagem prestador" onerror="this.style.display='none'" />
+                            <h3></h3>
+                            <span></span>
+                            <p></p>
                         </div>
                     </div>
-                    <div style="text-align: right;">
-                        <div style="color:#7b8aa4; font-weight: 600;"><i class="fa-solid fa-location-dot"></i> Belo Horizonte - MG</div>
-                    </div>
-                </div>
 
-                <div class="section">
-                    <h4>1. Descreva o serviço ou problema</h4>
-                    <textarea id="serviceDescription" placeholder="Ex: Preciso trocar as pastilhas de freio e o óleo do motor..."></textarea>
-                </div>
-
-                <div class="section">
-                    <h4>2. Informações do veículo</h4>
-                    <div class="form-row">
-                        <div class="form-col"><label>Marca/Modelo</label><input type="text" id="veiculoModelo" placeholder="Ex: Fiat Uno Way"></div>
-                        <div class="form-col"><label>Placa</label><input type="text" id="veiculoPlaca" placeholder="Ex: ABC1D23" maxlength="7"></div>
-                        <div class="form-col"><label>Ano</label><input type="text" id="veiculoAno" placeholder="Ex: 2018" maxlength="4"></div>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <h4>3. Escolha suas opções de Data e Horário (Opcional)</h4>
-                    <p style="font-size: 13px; color: #6b7280; margin-bottom: 12px;">Selecione os dias e horários que você tem disponibilidade para levar o veículo.</p>
-
-                    <div class="date-picker">
-                        <button class="nav-day" id="prevDay">&lt;</button>
-                        <div class="date-list" id="dateList"></div>
-                        <button class="nav-day" id="nextDay">&gt;</button>
+                    <!-- Dados do veículo -->
+                    <div class="section">
+                        <h4><i class="fa-solid fa-car" style="color:var(--primary-orange)"></i> Dados do Veículo</h4>
+                        <div class="form-row">
+                            <div class="form-input">
+                                <label class="label-orcamento">Modelo</label>
+                                <input class="texto-orcamento" id="veiculoModelo" placeholder="Ex: Honda Civic" />
+                            </div>
+                            <div class="form-input">
+                                <label class="label-orcamento">Placa *</label>
+                                <input class="texto-orcamento" id="veiculoPlaca" placeholder="Ex: ABC1D23" maxlength="8" required />
+                            </div>
+                            <div class="form-input">
+                                <label class="label-orcamento">Ano</label>
+                                <input class="texto-orcamento" id="veiculoAno" placeholder="Ex: 2020" inputmode="numeric" maxlength="4" />
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="time-slots" id="timeSlots"></div>
+                    <!-- Descrição -->
+                    <div class="section">
+                        <h4><i class="fa-solid fa-clipboard-list" style="color:var(--primary-orange)"></i> Detalhes do Serviço</h4>
+                        <div class="form-input">
+                            <label class="label-orcamento">Descreva o serviço que deseja solicitar. *</label>
+                            <input class="texto-orcamento" id="serviceDescription" placeholder="Ex: Motor fazendo barulho estranho" required />
+                        </div>
+                        <div class="form-row">
+                            <div class="form-input">
+                                <label class="label-orcamento">Orçamento máximo</label>
+                                <input class="texto-orcamento" id="budget" placeholder="R$ 0,00" />
+                            </div>
+                            <div class="form-input">
+                                <label class="label-orcamento">Forma de pagamento</label>
+                                <input class="texto-orcamento" id="paymentMethod" placeholder="Ex: Cartão de Crédito" />
+                            </div>
+                        </div>
+                        <div class="form-input">
+                            <label class="label-orcamento">Observações</label>
+                            <textarea rows="4" class="texto-orcamento" id="observacoes" placeholder="Observações adicionais (opcional)"></textarea>
+                        </div>
+                    </div>
 
-                    <div id="selectedList" style="margin-top:20px;"></div>
+                    <!-- Seleção de datas -->
+                    <div class="section">
+                        <h4><i class="fa-regular fa-calendar" style="color:var(--primary-orange)"></i> Escolha a Data</h4>
+                        <div class="date-picker">
+                            <button type="button" class="nav-day" id="prevDay"><i class="fa-solid fa-chevron-left"></i></button>
+                            <div class="date-list" id="dateList"></div>
+                            <button type="button" class="nav-day" id="nextDay"><i class="fa-solid fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Horários -->
+                    <div class="section">
+                        <h4><i class="fa-regular fa-clock" style="color:var(--primary-orange)"></i> Horários Disponíveis</h4>
+                        <div class="time-slots" id="timeSlots"></div>
+                    </div>
+
+                    <!-- Datas selecionadas -->
+                    <div class="section">
+                        <h4><i class="fa-solid fa-list-check" style="color:var(--primary-orange)"></i> Datas Selecionadas</h4>
+                        <div id="selectedList"></div>
+                    </div>
+
+                    <!-- WhatsApp -->
+                    <div style="margin-top: 10px;">
+                        <input type="checkbox" id="whatsappCheck" />
+                        <label for="whatsappCheck" style="font-size: 14px; font-weight: 500;"> Gostaria de receber o orçamento pelo WhatsApp.</label>
+                    </div>
+
+                    <div class="botao-solicitar">
+                        <button type="button" id="requestBtn">Solicitar orçamento</button>
+                    </div>
                 </div>
-
-                <button class="confirm-request" id="requestBtn"><i class="fa-solid fa-paper-plane"></i> Enviar Solicitação de Serviço</button>
             </div>
         </main>
     </div>
@@ -150,7 +196,7 @@
         <i class="fa-brands fa-youtube"></i>
     </footer>
 
-    <!-- Modais Injetados -->
+    <!-- Modais -->
     <div class="logout-modal-overlay" id="logoutModal">
         <div class="logout-modal">
             <i class="fa-solid fa-person-walking-arrow-right icon-alert"></i>
@@ -165,17 +211,16 @@
 
     <div class="confirm-modal-overlay" id="confirmModal">
         <div class="confirm-modal">
-            <i class="fa-solid fa-circle-check" style="font-size:48px;color:#16a34a;margin-bottom:12px;" id="confirmIcon"></i>
+            <i class="fa-solid fa-circle-check" style="font-size: 48px; color: #16a34a; margin-bottom: 12px" id="confirmIcon"></i>
             <h3 id="confirmTitle"></h3>
             <p id="confirmText"></p>
-            <div class="logout-buttons" style="margin-top:18px;">
+            <div class="logout-buttons" style="margin-top: 18px;">
                 <button class="btn-cancel" onclick="hideConfirmModal()">Fechar</button>
-                <button class="btn-confirm" onclick="window.location.href = 'home.html'">Ver no Painel</button>
+                <button class="btn-confirm" id="confirmActionBtn" onclick="window.location.href='meus-agendamentos.html'">Ver no Painel</button>
             </div>
         </div>
     </div>
 
-    <!-- Scripts (ordem correta: prestadores antes do global) -->
     <script src="prestadores.js"></script>
     <script src="global.js"></script>
     <script>
@@ -184,215 +229,169 @@
         let lastSelectedIso = null;
         let startOffset = 0;
         const visibleCount = 7;
-        const maxDays = 60;
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
+        const maxDays = 30;
+        const today = new Date(); today.setHours(0, 0, 0, 0);
 
-        // Mapa dia-da-semana (getDay) -> chave salva na agenda do prestador
-        const MAP_DIA = { 0:'dom', 1:'seg', 2:'ter', 3:'qua', 4:'qui', 5:'sex', 6:'sab' };
-        const HORARIOS_PADRAO = ['08:00','09:00','10:00','11:00','14:00','15:00','16:00','17:00'];
+        const MAP_DIA = { 0: 'dom', 1: 'seg', 2: 'ter', 3: 'qua', 4: 'qui', 5: 'sex', 6: 'sab' };
+        const HORARIOS_PADRAO = ['08:00', '09:00', '10:00', '11:00', '14:00', '15:00', '16:00', '17:00'];
 
-        // Prestador e sua agenda
         let prestador = null;
         let agendaPrestador = null;
 
-        // ===================== HELPERS =====================
-        // ISO no horário LOCAL (evita o bug do toISOString em UTC)
+        // ===================== UTILS =====================
         function toLocalISO(d) {
-            const ano = d.getFullYear();
-            const mes = String(d.getMonth() + 1).padStart(2, '0');
-            const dia = String(d.getDate()).padStart(2, '0');
-            return `${ano}-${mes}-${dia}`;
+            const y = d.getFullYear(), m = String(d.getMonth() + 1).padStart(2, '0'), dd = String(d.getDate()).padStart(2, '0');
+            return `${y}-${m}-${dd}`;
         }
 
-        // Converte "HH:MM" em minutos
-        function hhmmToMin(str) {
-            if (!str || !str.includes(':')) return null;
-            const [h, m] = str.split(':').map(Number);
-            return h * 60 + m;
+        function getPrestadorById(id) {
+            return prestadores.find(p => p.id.toString() === id);
         }
 
-        // Gera lista de horários a partir da agenda do prestador (manhã + tarde, de hora em hora)
-        function gerarHorariosDaAgenda(agenda) {
-            if (!agenda) return HORARIOS_PADRAO;
-            const slots = [];
-            const periodos = [
-                [agenda.manhaInicio, agenda.manhaFim],
-                [agenda.tardeInicio, agenda.tardeFim]
-            ];
-            periodos.forEach(([ini, fim]) => {
-                const a = hhmmToMin(ini);
-                const b = hhmmToMin(fim);
-                if (a == null || b == null || b <= a) return;
-                for (let t = a; t < b; t += 60) {
-                    slots.push(String(Math.floor(t / 60)).padStart(2, '0') + ':00');
-                }
-            });
-            return slots.length ? slots : HORARIOS_PADRAO;
-        }
-
-        // Verifica se o dia da semana é atendido pelo prestador
-        function diaDisponivel(d) {
-            const chave = MAP_DIA[d.getDay()];
-            if (agendaPrestador && Array.isArray(agendaPrestador.dias) && agendaPrestador.dias.length) {
-                return agendaPrestador.dias.includes(chave);
-            }
-            // Fallback: bloqueia fim de semana
-            return d.getDay() !== 0 && d.getDay() !== 6;
-        }
-
-        // ===================== PRESTADOR =====================
+        // ===================== PRESTADOR / AGENDA =====================
         function carregarPrestador() {
             const id = new URLSearchParams(window.location.search).get('prestador');
-            if (id && typeof getPrestadorById === 'function') {
-                prestador = getPrestadorById(id);
-            }
+            if (id) prestador = getPrestadorById(id);
 
             if (prestador) {
-                const nomeEl = document.getElementById('prestadorNome');
-                const catEl = document.getElementById('prestadorCategoria');
-                const imgEl = document.getElementById('prestadorImg');
-                if (nomeEl) nomeEl.textContent = prestador.nome;
-                if (catEl) catEl.textContent = prestador.categoria;
-                if (imgEl && prestador.imagemUrl) { imgEl.src = prestador.imagemUrl; imgEl.style.display = 'block'; }
+                document.querySelector(".card-prestador h3").textContent = prestador.nome;
+                document.querySelector(".card-prestador span").textContent = prestador.categoria;
+                document.querySelector(".card-prestador p").textContent = prestador.descricao;
+                if (prestador.imagemUrl) {
+                    const img = document.querySelector(".card-prestador img");
+                    img.src = prestador.imagemUrl;
+                    img.style.display = 'block';
+                }
+            } else {
+                document.querySelector(".card-prestador h3").textContent = "Prestador";
+                document.querySelector(".card-prestador span").textContent = "Serviço Automotivo";
+                document.querySelector(".card-prestador p").textContent = "Preencha os dados abaixo para solicitar um orçamento.";
             }
 
-            // Tenta carregar a agenda real configurada pelo prestador (gerenciamento-perfil)
-            // Estratégia 1: lista de usuários cadastrados
+            // Busca a agenda salva
             try {
                 const usuarios = JSON.parse(localStorage.getItem('agendacar_usuarios')) || [];
-                let u = null;
                 if (prestador) {
-                    u = usuarios.find(x =>
-                        (x.id && x.id === prestador.id) ||
-                        (x.nome && prestador.nome && x.nome.toLowerCase() === prestador.nome.toLowerCase())
-                    );
+                    const u = usuarios.find(x => x.id && x.id == prestador.id);
+                    if (u && u.agenda) agendaPrestador = u.agenda;
                 }
-                if (u && u.agenda) agendaPrestador = u.agenda;
-            } catch (e) { /* ignore */ }
+            } catch (e) { }
 
-            // Estratégia 2 (fallback dev): se a própria sessão for prestador, usa a agenda dela
             if (!agendaPrestador) {
                 try {
                     const sessao = JSON.parse(localStorage.getItem('agendacar_sessao'));
-                    if (sessao && sessao.tipo === 'prestador' && sessao.agenda) {
-                        agendaPrestador = sessao.agenda;
-                    }
-                } catch (e) { /* ignore */ }
+                    if (sessao && sessao.tipo === 'prestador' && sessao.agenda) agendaPrestador = sessao.agenda;
+                } catch (e) { }
             }
         }
 
-        // ===================== RENDER HORÁRIOS =====================
-        function renderTimeSlots() {
-            const container = document.getElementById('timeSlots');
-            container.innerHTML = '';
-
-            if (!lastSelectedIso) {
-                container.innerHTML = '<p class="hint-msg">Selecione um dia no calendário para ver os horários.</p>';
-                return;
+        function gerarHorariosDaAgenda() {
+            if (!agendaPrestador) return HORARIOS_PADRAO;
+            const { manhaInicio, manhaFim, tardeInicio, tardeFim } = agendaPrestador;
+            const horarios = [];
+            const horaToMin = hhmm => { const [h, m] = hhmm.split(':').map(Number); return h * 60 + m; };
+            function buscarSlots(inicio, fim) {
+                const a = horaToMin(inicio), b = horaToMin(fim);
+                if (b <= a) return;
+                for (let t = a; t < b; t += 60) horarios.push(String(Math.floor(t / 60)).padStart(2, '0') + ':00');
             }
-
-            const horarios = gerarHorariosDaAgenda(agendaPrestador);
-            const selAtual = selections.find(x => x.iso === lastSelectedIso);
-
-            horarios.forEach(hora => {
-                const slot = document.createElement('button');
-                slot.type = 'button';
-                slot.className = 'time-slot';
-                slot.textContent = hora;
-                if (selAtual && selAtual.time === hora) slot.classList.add('active-for-assign');
-
-                slot.addEventListener('click', function () {
-                    const sel = selections.find(x => x.iso === lastSelectedIso);
-                    if (sel) {
-                        sel.time = (sel.time === hora) ? null : hora; // toggle
-                    }
-                    renderTimeSlots();
-                    renderSelectedList();
-                });
-                container.appendChild(slot);
-            });
+            if (manhaInicio && manhaFim) buscarSlots(manhaInicio, manhaFim);
+            if (tardeInicio && tardeFim) buscarSlots(tardeInicio, tardeFim);
+            return horarios.length ? horarios : HORARIOS_PADRAO;
         }
 
-        // ===================== RENDER DATAS =====================
+        function diaDisponivel(d) {
+            const chave = MAP_DIA[d.getDay()];
+            if (agendaPrestador && Array.isArray(agendaPrestador.dias) && agendaPrestador.dias.length)
+                return agendaPrestador.dias.includes(chave);
+            return d.getDay() !== 0 && d.getDay() !== 6;
+        }
+
+        // ===================== RENDER =====================
         function renderDates() {
             const dateList = document.getElementById('dateList');
-            const dayNames = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
             dateList.innerHTML = '';
-
             for (let i = 0; i < visibleCount; i++) {
                 const offset = startOffset + i;
+                if (offset >= maxDays) break;
                 const d = new Date(today);
                 d.setDate(today.getDate() + offset);
                 const iso = toLocalISO(d);
-
                 const box = document.createElement('div');
                 box.className = 'date-box';
                 box.dataset.iso = iso;
-                box.innerHTML = `<div class="day">${dayNames[d.getDay()]}</div><div class="date">${d.getDate()} ${d.toLocaleString('pt-BR',{month:'short'})}</div>`;
+                box.innerHTML = `<div class="day">${['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'][d.getDay()]}</div><div class="date">${d.getDate()} ${d.toLocaleString('pt-BR', { month: 'short' })}</div>`;
 
                 if (!diaDisponivel(d)) {
                     box.classList.add('disabled');
                 } else {
-                    box.addEventListener('click', function () {
-                        const idx = selections.findIndex(x => x.iso === iso);
-                        if (idx >= 0) {
-                            // Já selecionado: clicar de novo apenas foca para escolher horário
-                            lastSelectedIso = iso;
-                        } else {
+                    box.addEventListener('click', () => {
+                        if (!selections.find(x => x.iso === iso)) {
                             selections.push({ iso: iso, offset: offset, time: null });
-                            lastSelectedIso = iso;
                         }
+                        lastSelectedIso = iso;
                         renderDates();
                         renderTimeSlots();
                         renderSelectedList();
                     });
                 }
-
                 if (selections.find(x => x.iso === iso)) box.classList.add('selected');
                 if (iso === lastSelectedIso) box.classList.add('selected');
                 dateList.appendChild(box);
             }
         }
 
-        // ===================== RENDER RESUMO =====================
+        function renderTimeSlots() {
+            const container = document.getElementById('timeSlots');
+            container.innerHTML = '';
+            if (!lastSelectedIso) {
+                container.innerHTML = '<p class="hint-msg">Selecione um dia no calendário para ver os horários.</p>';
+                return;
+            }
+            const horarios = gerarHorariosDaAgenda();
+            const sel = selections.find(x => x.iso === lastSelectedIso);
+            horarios.forEach(h => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'time-slot';
+                btn.textContent = h;
+                if (sel && sel.time === h) btn.classList.add('active-for-assign');
+                btn.addEventListener('click', () => {
+                    if (sel) sel.time = h;
+                    renderTimeSlots();
+                    renderSelectedList();
+                });
+                container.appendChild(btn);
+            });
+        }
+
         function renderSelectedList() {
             const container = document.getElementById('selectedList');
             container.innerHTML = '';
-
             if (!selections.length) {
                 container.innerHTML = '<div style="color:#6b7280; font-size:14px;">Nenhuma data selecionada ainda.</div>';
                 return;
             }
-
             selections.forEach(s => {
                 const [ano, mes, dia] = s.iso.split('-');
                 const d = new Date(Number(ano), Number(mes) - 1, Number(dia));
-
-                const item = document.createElement('div');
-                item.style.cssText = 'display:flex; justify-content:space-between; align-items:center; padding:12px; border:1px solid #e5e7eb; border-radius:8px; margin-bottom:8px; background:white;';
-
-                const left = document.createElement('div');
-                left.innerHTML = `<div style="font-weight:700; color:var(--text-blue);">${d.toLocaleDateString('pt-BR',{weekday:'short', day:'2-digit', month:'short'})}</div><div style="color:#6b7280;font-size:13px"><i class="fa-regular fa-clock"></i> ${s.time || 'Horário a definir'}</div>`;
-
-                const removeBtn = document.createElement('button');
-                removeBtn.type = 'button';
-                removeBtn.className = 'btn-cancel';
-                removeBtn.style.padding = '6px 12px';
-                removeBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
-                removeBtn.onclick = function () {
+                const div = document.createElement('div');
+                div.style.cssText = 'display:flex; justify-content:space-between; align-items:center; padding:12px; border:1px solid #e5e7eb; border-radius:8px; margin-bottom:8px; background:white;';
+                div.innerHTML = `<div style="font-weight:700; color:var(--text-blue);">${d.toLocaleDateString('pt-BR', { weekday: 'short', day: '2-digit', month: 'short' })}<div style="color:#6b7280;font-size:13px;font-weight:400;margin-top:2px"><i class="fa-regular fa-clock"></i> ${s.time || 'Horário a definir'}</div></div>`;
+                const btnRem = document.createElement('button');
+                btnRem.type = 'button';
+                btnRem.className = 'btn-cancel';
+                btnRem.style.padding = '6px 12px';
+                btnRem.innerHTML = '<i class="fa-solid fa-trash"></i>';
+                btnRem.onclick = () => {
                     selections = selections.filter(x => x.iso !== s.iso);
-                    if (lastSelectedIso === s.iso) {
-                        lastSelectedIso = selections.length ? selections[selections.length - 1].iso : null;
-                    }
+                    if (lastSelectedIso === s.iso) lastSelectedIso = null;
                     renderDates();
                     renderTimeSlots();
                     renderSelectedList();
                 };
-
-                item.appendChild(left);
-                item.appendChild(removeBtn);
-                container.appendChild(item);
+                div.appendChild(btnRem);
+                container.appendChild(div);
             });
         }
 
@@ -400,27 +399,59 @@
         function enviarSolicitacao() {
             const description = document.getElementById('serviceDescription').value.trim();
             const placa = document.getElementById('veiculoPlaca').value.trim();
+            const modelo = document.getElementById('veiculoModelo').value.trim();
+            const ano = document.getElementById('veiculoAno').value.trim();
+            const budget = document.getElementById('budget').value.trim();
+            const paymentMethod = document.getElementById('paymentMethod').value.trim();
+            const observacoes = document.getElementById('observacoes').value.trim();
+            const whatsapp = document.getElementById('whatsappCheck').checked;
 
             if (!description) { showConfirmModal('Atenção', 'Por favor, descreva o problema ou serviço.', true); return; }
             if (!placa) { showConfirmModal('Atenção', 'Por favor, informe a placa do veículo.', true); return; }
 
-            showConfirmModal('Solicitação Enviada!', 'Sua solicitação foi enviada para o prestador. Você pode acompanhar o status pelo seu painel.');
+            let clienteNome = 'Cliente';
+            try {
+                const sessao = JSON.parse(localStorage.getItem('agendacar_sessao'));
+                if (sessao && sessao.nome) clienteNome = sessao.nome;
+            } catch (e) { }
+
+            const agendamento = {
+                id: Date.now(),
+                cliente: clienteNome,
+                prestadorId: prestador ? prestador.id : null,
+                prestadorNome: prestador ? prestador.nome : 'Prestador Autônomo',
+                categoria: prestador ? prestador.categoria : '—',
+                imagemUrl: prestador ? prestador.imagemUrl : '',
+                descricao: description,
+                veiculo: { modelo: modelo, placa: placa.toUpperCase(), ano: ano },
+                orcamento: budget,
+                pagamento: paymentMethod,
+                observacoes: observacoes,
+                whatsapp: whatsapp,
+                datas: selections.map(s => ({ iso: s.iso, time: s.time || null })),
+                status: 'pendente',
+                criadoEm: new Date().toISOString()
+            };
+
+            let lista = JSON.parse(localStorage.getItem('agendacar_agendamentos')) || [];
+            lista.push(agendamento);
+            localStorage.setItem('agendacar_agendamentos', JSON.stringify(lista));
+
+            showConfirmModal('Solicitação Enviada!', 'Sua solicitação foi registrada. Acompanhe o status na página "Meus Agendamentos".');
         }
 
         // ===================== INIT =====================
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', () => {
             carregarPrestador();
-
-            document.getElementById('prevDay').addEventListener('click', function () {
+            document.getElementById('prevDay').addEventListener('click', () => {
                 startOffset = Math.max(0, startOffset - visibleCount);
                 renderDates();
             });
-            document.getElementById('nextDay').addEventListener('click', function () {
-                startOffset = Math.min(maxDays - visibleCount, startOffset + visibleCount);
+            document.getElementById('nextDay').addEventListener('click', () => {
+                startOffset = Math.min(Math.max(0, maxDays - visibleCount), startOffset + visibleCount);
                 renderDates();
             });
             document.getElementById('requestBtn').addEventListener('click', enviarSolicitacao);
-
             renderDates();
             renderTimeSlots();
             renderSelectedList();

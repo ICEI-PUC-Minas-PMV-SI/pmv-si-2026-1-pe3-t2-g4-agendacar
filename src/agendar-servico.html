@@ -75,11 +75,7 @@
             display: flex; justify-content: center; align-items: center;
             z-index: 9999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
         }
-
-        .logout-modal-overlay.active {
-            opacity: 1; visibility: visible;
-        }
-
+        .logout-modal-overlay.active { opacity: 1; visibility: visible; }
         .logout-modal {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.8));
             padding: 40px; border-radius: 24px; text-align: center;
@@ -88,19 +84,10 @@
             transform: scale(0.8) translateY(30px);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-
-        .logout-modal-overlay.active .logout-modal {
-            transform: scale(1) translateY(0);
-        }
-
-        .logout-modal i.icon-alert {
-            font-size: 55px; color: #ff8a1a; margin-bottom: 20px;
-            filter: drop-shadow(0 4px 6px rgba(244, 121, 32, 0.3));
-        }
-
+        .logout-modal-overlay.active .logout-modal { transform: scale(1) translateY(0); }
+        .logout-modal i.icon-alert { font-size: 55px; color: #ff8a1a; margin-bottom: 20px; filter: drop-shadow(0 4px 6px rgba(244, 121, 32, 0.3)); }
         .logout-modal h3 { color: #0b4d8f; font-size: 24px; margin-bottom: 15px; font-weight: 800; }
         .logout-modal p { color: #374151; margin-bottom: 30px; font-size: 16px; line-height: 1.5; }
-
         .logout-buttons { display: flex; gap: 15px; justify-content: center; }
 
         .btn-cancel {
@@ -109,7 +96,6 @@
             cursor: pointer; transition: 0.3s;
         }
         .btn-cancel:hover { background: rgba(0,0,0,0.05); color: #1f2937; border-color: #a0aec0; }
-
         .btn-confirm {
             flex: 1; padding: 12px; border-radius: 12px; border: none;
             background: linear-gradient(135deg, #f47120, #ff9040);
@@ -158,12 +144,10 @@
                 <button class="service-btn" data-categoria="Suspensão"><i class="fa-solid fa-car-burst"></i> Suspensão</button>
                 <button class="service-btn" data-categoria="Lanternagem/Pintura"><i class="fa-solid fa-spray-can"></i> Lanternagem/Pintura</button>
                 <button class="service-btn" data-categoria="Outros Serviços"><i class="fa-solid fa-toolbox"></i> Outros serviços</button>
-                <!-- BOTÃO VISÍVEL APENAS PARA PRESTADORES (controlado por JS) -->
-                    <button class="service-btn" id="btn-gerenciar-perfil"
-                            style="display:none;"
-                            onclick="window.location.href='gerenciamento-perfil.html'">
-                        <i class="fa-solid fa-user-gear"></i> Gerenciar Perfil
-                    </button>
+                <button class="service-btn" id="btn-ver-agendamentos" onclick="window.location.href='meus-agendamentos.html'"><i class="fa-solid fa-calendar-check"></i> Meus Agendamentos</button>
+                <button class="service-btn" id="btn-gerenciar-perfil" style="display:none;" onclick="window.location.href='gerenciamento-perfil.html'">
+                    <i class="fa-solid fa-user-gear"></i> Gerenciar Perfil
+                </button>
             </div>
 
             <div class="institucional">
@@ -197,8 +181,7 @@
                     <h4>1. Escolha o dia</h4>
                     <div class="date-picker">
                         <button class="nav-day" id="prevDay">&lt;</button>
-                        <div class="date-list" id="dateList">
-                        </div>
+                        <div class="date-list" id="dateList"></div>
                         <button class="nav-day" id="nextDay">&gt;</button>
                     </div>
                 </div>
@@ -228,7 +211,21 @@
         <i class="fa-brands fa-instagram"></i>
         <i class="fa-brands fa-youtube"></i>
     </footer>
-    
+
+    <!-- Modal de Logout -->
+    <div class="logout-modal-overlay" id="logoutModal">
+        <div class="logout-modal">
+            <i class="fa-solid fa-person-walking-arrow-right icon-alert"></i>
+            <h3>Já vai embora?</h3>
+            <p>Tem certeza que deseja sair da sua conta?</p>
+            <div class="logout-buttons">
+                <button class="btn-cancel" onclick="hideLogoutModal()">Cancelar</button>
+                <button class="btn-confirm" onclick="confirmLogout()">Sim, sair</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmação -->
     <div class="confirm-modal-overlay" id="confirmModal">
         <div class="confirm-modal">
             <i class="fa-solid fa-circle-check" style="font-size:48px;color:#16a34a;margin-bottom:12px;" id="confirmIcon"></i>
@@ -241,6 +238,7 @@
         </div>
     </div>
 
+    <!-- Modal de Saída -->
     <div class="confirm-modal-overlay" id="leaveModal">
         <div class="confirm-modal">
             <i class="fa-solid fa-triangle-exclamation" style="font-size:48px;color:#f47120;margin-bottom:12px;"></i>
@@ -267,85 +265,62 @@
                 const primeiroNome = nomeSeguro.split(' ')[0];
                 btnHeader.innerHTML = `<i class="fa-solid fa-user-check"></i> Olá, ${primeiroNome} (Sair)`;
                 btnHeader.onclick = showLogoutModal;
-                // ── Exibe botão de gerenciamento apenas para prestadores ──
-                    if (usuario.tipo === 'prestador') {
-                        const btnGerenciar = document.getElementById('btn-gerenciar-perfil');
-                        if (btnGerenciar) btnGerenciar.style.display = 'flex';
-                    }
+                if (usuario.tipo === 'prestador') {
+                    const btnGerenciar = document.getElementById('btn-gerenciar-perfil');
+                    if (btnGerenciar) btnGerenciar.style.display = 'flex';
+                }
             }
             initDateList();
             initTimeSlotBehavior();
-            initLeaveModalBehavior(); // ADICIONADO: Iniciando a função dos botões laterais e da logo
+            initLeaveModalBehavior();
         });
 
         const modalOverlay = document.getElementById('logoutModal');
 
         function showLogoutModal(event) {
-            if(event) event.preventDefault();
-            modalOverlay.classList.add('active');
+            if (event) event.preventDefault();
+            if (modalOverlay) modalOverlay.classList.add('active');
         }
-
         function hideLogoutModal() {
-            modalOverlay.classList.remove('active');
+            if (modalOverlay) modalOverlay.classList.remove('active');
         }
-
         function confirmLogout() {
             localStorage.removeItem('agendacar_sessao');
             window.location.href = 'index.html';
         }
 
-        /* * ADICIONADO: Lógica para o modal de Sair do Agendamento 
-         */
         let urlDestino = '';
 
         function initLeaveModalBehavior() {
-            // Lógica para os botões do menu lateral
             const serviceBtns = document.querySelectorAll('.service-btn');
-            
             serviceBtns.forEach(function(btn) {
+                // Botões com navegação própria (sem data-categoria) são ignorados
+                if (!btn.getAttribute('data-categoria')) return;
                 btn.addEventListener('click', function(e) {
                     e.preventDefault();
-                    
                     const categoria = this.getAttribute('data-categoria');
-                    // Monta a URL de destino com o parâmetro da categoria clicada
                     urlDestino = 'catalogo-prestadores.html?categoria=' + encodeURIComponent(categoria);
-                    
-                    // Exibe o modal
                     document.getElementById('leaveModal').classList.add('active');
                 });
             });
 
-            // Lógica para a Logo
             const logo = document.querySelector('.Logo');
             if (logo) {
                 logo.addEventListener('click', function(e) {
                     e.preventDefault();
-                    
-                    // Salva a URL da home no destino
-                    urlDestino = this.getAttribute('href'); 
-                    
-                    // Exibe o modal
+                    urlDestino = this.getAttribute('href');
                     document.getElementById('leaveModal').classList.add('active');
                 });
             }
 
-            // Se o usuário clicar em "Sim"
             document.getElementById('btnConfirmLeave').addEventListener('click', function() {
-                if (urlDestino) {
-                    window.location.href = urlDestino;
-                }
+                if (urlDestino) window.location.href = urlDestino;
             });
         }
 
         function hideLeaveModal() {
             document.getElementById('leaveModal').classList.remove('active');
-            urlDestino = ''; // Limpa a URL se o usuário cancelar
-        }
-        /* Fim da lógica do modal de saída */
-
-
-        function deslogarEIrParaLanding(event) {
-            showLogoutModal(event);
+            urlDestino = '';
         }
 
         function initDateList() {
@@ -355,6 +330,11 @@
             const maxDays = 365;
             let startOffset = 0;
             let selectedOffset = 1;
+
+            function toLocalISO(d) {
+                const y = d.getFullYear(), m = String(d.getMonth() + 1).padStart(2, '0'), dd = String(d.getDate()).padStart(2, '0');
+                return `${y}-${m}-${dd}`;
+            }
 
             function formatBox(d) {
                 const dayNames = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
@@ -369,7 +349,7 @@
                     d.setDate(today.getDate() + offset);
                     const box = document.createElement('div');
                     box.className = 'date-box';
-                    box.dataset.iso = d.toISOString().slice(0,10);
+                    box.dataset.iso = toLocalISO(d);
                     box.dataset.offset = offset;
                     const isWeekend = (d.getDay() === 0 || d.getDay() === 6);
                     if (isWeekend) box.classList.add('disabled');
@@ -389,7 +369,6 @@
                 startOffset = Math.max(0, startOffset - visibleCount);
                 renderDates(startOffset);
             });
-
             document.getElementById('nextDay').addEventListener('click', function(){
                 startOffset = Math.min(maxDays - visibleCount, startOffset + visibleCount);
                 renderDates(startOffset);
@@ -401,18 +380,52 @@
         function initTimeSlotBehavior() {
             const slots = document.querySelectorAll('.time-slot');
             slots.forEach(s => s.addEventListener('click', function(){
-                slots.forEach(x=>x.classList.remove('active'));
+                slots.forEach(x => x.classList.remove('active'));
                 s.classList.add('active');
             }));
+
             document.getElementById('confirmBtn').addEventListener('click', function(){
                 const selectedDate = document.querySelector('.date-box.active');
                 const selectedTime = document.querySelector('.time-slot.active');
                 if (!selectedDate || !selectedTime) {
-                    showConfirmModal('Atenção','Por favor, selecione dia e horário.', true);
+                    showConfirmModal('Atenção', 'Por favor, selecione dia e horário.', true);
                     return;
                 }
-                showConfirmModal('Agendamento confirmado', `Agendamento confirmado em ${selectedDate.dataset.iso} às ${selectedTime.textContent}`);
+                salvarAgendamento(selectedDate.dataset.iso, selectedTime.textContent.trim());
+                showConfirmModal('Agendamento confirmado', `Agendamento confirmado em ${selectedDate.dataset.iso} às ${selectedTime.textContent.trim()}`);
             });
+        }
+
+        // ===================== SALVAR NO LOCALSTORAGE =====================
+        function salvarAgendamento(iso, time) {
+            let clienteNome = 'Cliente';
+            try {
+                const sessao = JSON.parse(localStorage.getItem('agendacar_sessao'));
+                if (sessao && sessao.nome) clienteNome = sessao.nome;
+            } catch (e) {}
+
+            const summary = document.querySelector('.service-summary .texts');
+            const categoria = summary ? summary.children[0].textContent.trim() : '—';
+            const prestadorNome = summary ? summary.children[1].textContent.trim() : 'Prestador';
+            const imgEl = document.querySelector('.service-info img');
+            const imagemUrl = imgEl ? imgEl.getAttribute('src') : '';
+
+            const agendamento = {
+                id: Date.now(),
+                cliente: clienteNome,
+                prestadorNome: prestadorNome,
+                categoria: categoria,
+                imagemUrl: imagemUrl,
+                descricao: 'Agendamento de serviço',
+                veiculo: { modelo: '', placa: '', ano: '' },
+                datas: [{ iso: iso, time: time }],
+                status: 'pendente',
+                criadoEm: new Date().toISOString()
+            };
+
+            let lista = JSON.parse(localStorage.getItem('agendacar_agendamentos')) || [];
+            lista.push(agendamento);
+            localStorage.setItem('agendacar_agendamentos', JSON.stringify(lista));
         }
 
         function showConfirmModal(title, text, isWarning) {
@@ -436,9 +449,9 @@
             document.getElementById('confirmModal').classList.remove('active');
         }
 
+        // ===================== CORREÇÃO PRINCIPAL =====================
         function goToMyAppointments() {
-            // redireciona para página de agendamentos (ajustar rota quando existir)
-            window.location.href = 'home.html';
+            window.location.href = 'meus-agendamentos.html';
         }
     </script>
 </body>

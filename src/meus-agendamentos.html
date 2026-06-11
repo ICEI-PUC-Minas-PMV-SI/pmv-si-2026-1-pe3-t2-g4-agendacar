@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgendaCar - Meus Agendamentos</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='0' y='4' width='5' height='5' rx='2.5' fill='%23f47920'/%3E%3Crect x='0' y='13' width='5' height='5' rx='2.5' fill='%2312368a'/%3E%3Cg transform='skewX(-10) translate(6, 1)'%3E%3Crect x='0' y='0' width='25' height='30' rx='4' fill='%2312368a'/%3E%3Crect x='4' y='3' width='17' height='5' rx='2' fill='%23ffffff'/%3E%3Crect x='4' y='12' width='17' height='5' rx='2' fill='%23ffffff'/%3E%3Crect x='4' y='21' width='17' height='5' rx='2' fill='%23ffffff'/%3E%3C/g%3E%3C/svg%3E">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+
+    <style>
+        .agendamentos-wrapper { width: 100%; max-width: 1000px; }
+        .page-title { font-size: 26px; color: var(--text-blue); font-weight: 800; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; }
+        .page-sub { color: #6b7280; font-size: 14px; margin-bottom: 28px; }
+
+        .filtros { display: flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap; }
+        .filtro-btn { padding: 8px 18px; border: 1.5px solid #e5e7eb; background: white; border-radius: 20px; cursor: pointer; font-weight: 700; font-size: 13px; color: #555; transition: 0.2s; }
+        .filtro-btn:hover { border-color: var(--primary-orange); }
+        .filtro-btn.active { background: var(--primary-blue); color: white; border-color: var(--primary-blue); }
+
+        .lista { display: flex; flex-direction: column; gap: 16px; }
+        .card-agend { background: white; border-radius: 14px; padding: 22px 26px; border: 1px solid #e5e7eb; box-shadow: 0 4px 15px rgba(0,0,0,0.04); display: flex; gap: 20px; align-items: flex-start; transition: box-shadow 0.2s; }
+        .card-agend:hover { box-shadow: 0 6px 22px rgba(0,0,0,0.1); }
+        .card-img { width: 70px; height: 70px; border-radius: 12px; object-fit: cover; border: 2px solid var(--primary-orange); flex-shrink: 0; background: #e0e7ef; }
+        .card-corpo { flex: 1; min-width: 0; }
+        .card-topo { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 6px; }
+        .card-prestador { font-weight: 800; font-size: 17px; color: var(--text-blue); }
+        .card-categoria { font-size: 13px; color: #6b7280; font-weight: 600; margin-bottom: 10px; }
+        .card-desc { font-size: 14px; color: #374151; background: #f9fafb; border-radius: 8px; padding: 10px 14px; margin-bottom: 12px; border: 1px solid #f0f0f0; }
+        .card-meta { display: flex; gap: 18px; flex-wrap: wrap; font-size: 13px; color: #555; margin-bottom: 10px; }
+        .card-meta span i { color: var(--primary-orange); margin-right: 5px; }
+        .card-datas { display: flex; gap: 8px; flex-wrap: wrap; }
+        .data-chip { background: #fff3ea; border: 1px solid var(--primary-orange); color: #b45309; border-radius: 8px; padding: 4px 12px; font-size: 12px; font-weight: 700; }
+
+        .badge { display: inline-flex; align-items: center; gap: 6px; border-radius: 20px; padding: 4px 14px; font-size: 12px; font-weight: 700; flex-shrink: 0; }
+        .badge-pendente { background: #fff8e1; color: #f57f17; border: 1px solid #ffe082; }
+        .badge-confirmado { background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; }
+        .badge-cancelado { background: #fff3f3; color: #c62828; border: 1px solid #ef9a9a; }
+
+        .card-acoes { margin-top: 12px; display: flex; gap: 10px; }
+        .btn-cancelar-ag { background: #fff3f3; color: #c62828; border: 1.5px solid #ef9a9a; border-radius: 8px; padding: 7px 16px; font-size: 13px; font-weight: 700; cursor: pointer; transition: 0.2s; }
+        .btn-cancelar-ag:hover { background: #ffcdd2; }
+
+        .vazio { text-align: center; padding: 60px 20px; background: white; border-radius: 16px; border: 1px dashed #d1d5db; }
+        .vazio i { font-size: 54px; color: #cbd5e1; margin-bottom: 16px; }
+        .vazio h3 { color: var(--text-blue); font-size: 20px; margin-bottom: 8px; }
+        .vazio p { color: #6b7280; margin-bottom: 20px; }
+        .vazio a { display: inline-block; background: linear-gradient(135deg, var(--primary-orange), #ff9040); color: white; text-decoration: none; padding: 12px 28px; border-radius: 8px; font-weight: 800; }
+
+        @media (max-width: 600px) {
+            .card-agend { flex-direction: column; }
+            .card-img { width: 60px; height: 60px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-visuals"><div class="tech-grid"></div></div>
+
+    <header>
+        <a href="home.html" class="Logo">
+            <img src="img/HLogo.png" alt="Logo AgendaCar" onerror="this.style.display='none'">
+        </a>
+        <button class="btn-header">Entrar / Cadastrar</button>
+    </header>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <div class="menu-services">
+                <button class="service-btn" onclick="window.location.href='catalogo-prestadores.html?categoria=Mecânica Geral'"><i class="fa-solid fa-wrench"></i> Mecânica Geral</button>
+                <button class="service-btn" onclick="window.location.href='catalogo-prestadores.html?categoria=Motores'"><i class="fa-solid fa-cogs"></i> Motores</button>
+                <button class="service-btn" onclick="window.location.href='catalogo-prestadores.html?categoria=Suspensão'"><i class="fa-solid fa-car-burst"></i> Suspensão</button>
+                <button class="service-btn" onclick="window.location.href='catalogo-prestadores.html?categoria=Lanternagem/Pintura'"><i class="fa-solid fa-spray-can"></i> Lanternagem/Pintura</button>
+                <button class="service-btn" onclick="window.location.href='catalogo-prestadores.html?categoria=Outros Serviços'"><i class="fa-solid fa-toolbox"></i> Outros serviços</button>
+                <button class="service-btn" onclick="window.location.href='meus-agendamentos.html'" style="background:#fff3ea;border-color:var(--primary-orange)"><i class="fa-solid fa-calendar-check"></i> Meus Agendamentos</button>
+                <button class="service-btn" id="btn-gerenciar-perfil" style="display:none" onclick="window.location.href='gerenciamento-perfil.html'">
+                    <i class="fa-solid fa-user-gear"></i> Gerenciar Perfil
+                </button>
+            </div>
+            <div class="institucional">
+                <h3>Institucional</h3>
+                <ul>
+                    <li><a href="quem-somos.html">Quem somos?</a></li>
+                    <li><a href="fale-conosco.html">Fale conosco</a></li>
+                    <li><a href="termos-uso.html">Termos de Uso</a></li>
+                    <li><a href="politica-privacidade.html">Política de Privacidade</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="content">
+            <div class="agendamentos-wrapper">
+                <div class="page-title"><i class="fa-solid fa-calendar-check" style="color:var(--primary-orange)"></i> Meus Agendamentos</div>
+                <p class="page-sub">Acompanhe aqui o status de todas as suas solicitações de serviço.</p>
+
+                <div class="filtros" id="filtros">
+                    <button class="filtro-btn active" data-filtro="todos">Todos</button>
+                    <button class="filtro-btn" data-filtro="pendente">Pendentes</button>
+                    <button class="filtro-btn" data-filtro="confirmado">Confirmados</button>
+                    <button class="filtro-btn" data-filtro="cancelado">Cancelados</button>
+                </div>
+
+                <div class="lista" id="listaAgendamentos"></div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-youtube"></i>
+    </footer>
+
+    <!-- Modais -->
+    <div class="logout-modal-overlay" id="logoutModal">
+        <div class="logout-modal">
+            <i class="fa-solid fa-person-walking-arrow-right icon-alert"></i>
+            <h3>Já vai embora?</h3>
+            <p>Tem certeza que deseja sair da sua conta?</p>
+            <div class="logout-buttons">
+                <button class="btn-cancel" onclick="hideLogoutModal()">Cancelar</button>
+                <button class="btn-confirm" onclick="confirmLogout()">Sim, sair</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="confirm-modal-overlay" id="confirmModal">
+        <div class="confirm-modal">
+            <i class="fa-solid fa-circle-check" style="font-size:48px;color:#16a34a;margin-bottom:12px;" id="confirmIcon"></i>
+            <h3 id="confirmTitle"></h3>
+            <p id="confirmText"></p>
+            <div class="logout-buttons" style="margin-top:18px;">
+                <button class="btn-cancel" onclick="hideConfirmModal()">Fechar</button>
+                <button class="btn-confirm" onclick="window.location.href='catalogo-prestadores.html'">Novo Serviço</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="prestadores.js"></script>
+    <script src="global.js"></script>
+    <script>
+        let filtroAtual = 'todos';
+        const STATUS_LABEL = { pendente: 'Pendente', confirmado: 'Confirmado', cancelado: 'Cancelado' };
+        const STATUS_ICON = { pendente: 'fa-clock', confirmado: 'fa-circle-check', cancelado: 'fa-circle-xmark' };
+
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.filtro-btn').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    filtroAtual = this.dataset.filtro;
+                    renderLista();
+                });
+            });
+            renderLista();
+        });
+
+        function getAgendamentos() {
+            return JSON.parse(localStorage.getItem('agendacar_agendamentos')) || [];
+        }
+
+        function formatarData(iso, time) {
+            const [a, m, d] = iso.split('-');
+            const data = new Date(Number(a), Number(m) - 1, Number(d));
+            const txt = data.toLocaleDateString('pt-BR', { weekday: 'short', day: '2-digit', month: 'short' });
+            return time ? `${txt} · ${time}` : txt;
+        }
+
+        function renderLista() {
+            const container = document.getElementById('listaAgendamentos');
+            let lista = getAgendamentos();
+            lista.sort((a, b) => new Date(b.criadoEm) - new Date(a.criadoEm));
+
+            if (filtroAtual !== 'todos') {
+                lista = lista.filter(a => a.status === filtroAtual);
+            }
+
+            if (!lista.length) {
+                container.innerHTML = `
+                    <div class="vazio">
+                        <i class="fa-regular fa-calendar-xmark"></i>
+                        <h3>Nenhum agendamento ${filtroAtual !== 'todos' ? 'nesta categoria' : 'por aqui'}</h3>
+                        <p>Que tal solicitar um serviço agora mesmo?</p>
+                        <a href="catalogo-prestadores.html">Procurar prestadores</a>
+                    </div>`;
+                return;
+            }
+
+            container.innerHTML = lista.map(ag => {
+                const status = ag.status || 'pendente';
+                const datasHtml = (ag.datas && ag.datas.length)
+                    ? ag.datas.map(dt => `<span class="data-chip"><i class="fa-regular fa-calendar"></i> ${formatarData(dt.iso, dt.time)}</span>`).join('')
+                    : '<span class="data-chip">Data a combinar</span>';
+
+                const v = ag.veiculo || {};
+                const acoes = (status === 'pendente')
+                    ? `<div class="card-acoes"><button class="btn-cancelar-ag" onclick="cancelarAgendamento(${ag.id})"><i class="fa-solid fa-ban"></i> Cancelar solicitação</button></div>`
+                    : '';
+
+                return `
+                    <div class="card-agend">
+                        <img class="card-img" src="${ag.imagemUrl || 'img/Design/placeholder.png'}" alt="prestador" onerror="this.style.display='none'">
+                        <div class="card-corpo">
+                            <div class="card-topo">
+                                <div class="card-prestador">${ag.prestadorNome}</div>
+                                <span class="badge badge-${status}"><i class="fa-solid ${STATUS_ICON[status]}"></i> ${STATUS_LABEL[status]}</span>
+                            </div>
+                            <div class="card-categoria"><i class="fa-solid fa-tag"></i> ${ag.categoria || '—'}</div>
+                            <div class="card-desc">${ag.descricao}</div>
+                            <div class="card-meta">
+                                <span><i class="fa-solid fa-car"></i> ${v.modelo || 'Veículo'}</span>
+                                <span><i class="fa-solid fa-id-card"></i> ${v.placa || '—'}</span>
+                                ${v.ano ? `<span><i class="fa-solid fa-calendar-day"></i> ${v.ano}</span>` : ''}
+                                ${ag.orcamento ? `<span><i class="fa-solid fa-money-bill"></i> ${ag.orcamento}</span>` : ''}
+                            </div>
+                            <div class="card-datas">${datasHtml}</div>
+                            ${acoes}
+                        </div>
+                    </div>`;
+            }).join('');
+        }
+
+        function cancelarAgendamento(id) {
+            let lista = getAgendamentos();
+            const idx = lista.findIndex(a => a.id === id);
+            if (idx >= 0) {
+                lista[idx].status = 'cancelado';
+                localStorage.setItem('agendacar_agendamentos', JSON.stringify(lista));
+                renderLista();
+                showConfirmModal('Solicitação cancelada', 'O agendamento foi cancelado com sucesso.', false);
+            }
+        }
+    </script>
+</body>
+</html>
