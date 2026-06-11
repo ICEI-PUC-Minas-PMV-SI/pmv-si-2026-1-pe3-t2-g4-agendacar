@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
-    
+
     <style>
         /* CSS Específico da página de Agendamento/Serviço */
         .solicitacao-wrapper { width: 100%; max-width: 1000px; background: white; border-radius: 12px; padding: 40px; box-shadow: 0 8px 30px rgba(0,0,0,0.05); border: 1px solid #e5e7eb; }
@@ -17,7 +17,7 @@
         .service-summary { display: flex; justify-content: space-between; align-items: center; padding: 18px; border: 2px solid rgba(11, 77, 143, 0.2); border-radius: 8px; margin-bottom: 28px; background: #fafafa;}
         .service-info { display: flex; gap: 14px; align-items: center; }
         .service-info img { width: 90px; height: 90px; object-fit: cover; border-radius: 50%; border: 2px solid var(--primary-orange);}
-        
+
         .section { margin-bottom: 25px; }
         .section h4 { margin: 0 0 12px 0; color: #222; font-weight: 700; font-size: 18px; border-bottom: 2px solid #e5e7eb; padding-bottom: 8px;}
 
@@ -36,7 +36,7 @@
         .date-list { display: flex; gap: 10px; overflow-x: auto; padding: 6px; padding-bottom: 10px;}
         .date-list::-webkit-scrollbar { height: 6px; }
         .date-list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-        
+
         .date-box { min-width: 80px; background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px; text-align: center; cursor: pointer; transition: 0.3s;}
         .date-box .day { font-weight: 700; color: #333; }
         .date-box .date { color: #7b8aa4; font-size: 12px; margin-top: 4px;}
@@ -49,10 +49,11 @@
         .time-slot { padding: 10px 18px; border: 1px solid #e6e6e6; border-radius: 8px; cursor: pointer; background: #fff; color: #333; font-weight: 700; transition: 0.3s;}
         .time-slot:hover { border-color: var(--primary-orange); }
         .time-slot.active-for-assign { background: var(--primary-orange); color: white; border-color: var(--primary-orange); }
+        .hint-msg { color:#6b7280; font-size:14px; }
 
         .confirm-request { margin-top: 20px; width: 100%; background: linear-gradient(135deg, var(--primary-orange), #ff9040); color: white; border: none; padding: 16px; border-radius: 8px; font-size: 18px; font-weight: 800; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 15px rgba(244, 121, 32, 0.2);}
         .confirm-request:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(244, 121, 32, 0.4);}
-        
+
         @media (max-width: 768px) {
             .service-summary { flex-direction: column; align-items: flex-start; }
             .date-picker { flex-direction: column; align-items: stretch;}
@@ -62,22 +63,25 @@
 </head>
 <body>
     <div class="background-visuals"><div class="tech-grid"></div></div>
-    
+
     <header>
         <a href="home.html" class="Logo">
             <img src="img/HLogo.png" alt="Logo AgendaCar" onerror="this.style.display='none'">
         </a>
         <button class="btn-header">Entrar / Cadastrar</button>
     </header>
-    
+
     <div class="main-container">
         <aside class="sidebar">
             <div class="menu-services">
-                <button class="service-btn"><i class="fa-solid fa-wrench"></i> Mecânica Geral</button>
-                <button class="service-btn"><i class="fa-solid fa-cogs"></i> Motores</button>
-                <button class="service-btn"><i class="fa-solid fa-car-burst"></i> Suspensão</button>
-                <button class="service-btn"><i class="fa-solid fa-spray-can"></i> Lanternagem/Pintura</button>
-                <button class="service-btn"><i class="fa-solid fa-toolbox"></i> Outros serviços</button>
+                <button class="service-btn" data-categoria="Mecânica Geral"><i class="fa-solid fa-wrench"></i> Mecânica Geral</button>
+                <button class="service-btn" data-categoria="Motores"><i class="fa-solid fa-cogs"></i> Motores</button>
+                <button class="service-btn" data-categoria="Suspensão"><i class="fa-solid fa-car-burst"></i> Suspensão</button>
+                <button class="service-btn" data-categoria="Lanternagem/Pintura"><i class="fa-solid fa-spray-can"></i> Lanternagem/Pintura</button>
+                <button class="service-btn" data-categoria="Outros Serviços"><i class="fa-solid fa-toolbox"></i> Outros serviços</button>
+                <button class="service-btn" id="btn-gerenciar-perfil" style="display:none" onclick="window.location.href='gerenciamento-perfil.html'">
+                    <i class="fa-solid fa-user-gear"></i> Gerenciar Perfil
+                </button>
             </div>
             <div class="institucional">
                 <h3>Institucional</h3>
@@ -93,13 +97,13 @@
         <main class="content">
             <div class="solicitacao-wrapper">
                 <div class="page-title">Solicitar Serviço</div>
-                
+
                 <div class="service-summary">
                     <div class="service-info">
-                        <img src="img/Design/placeholder.png" alt="prestador" onerror="this.style.display='none'">
+                        <img id="prestadorImg" src="img/Design/placeholder.png" alt="prestador" onerror="this.style.display='none'">
                         <div>
-                            <div style="color:var(--text-blue); font-weight:800; font-size: 18px;">Mecânica Geral</div>
-                            <div style="font-weight:700; color:#555;">Prestador Autônomo</div>
+                            <div id="prestadorNome" style="color:var(--text-blue); font-weight:800; font-size: 18px;">Mecânica Geral</div>
+                            <div id="prestadorCategoria" style="font-weight:700; color:#555;">Prestador Autônomo</div>
                         </div>
                     </div>
                     <div style="text-align: right;">
@@ -111,7 +115,7 @@
                     <h4>1. Descreva o serviço ou problema</h4>
                     <textarea id="serviceDescription" placeholder="Ex: Preciso trocar as pastilhas de freio e o óleo do motor..."></textarea>
                 </div>
-                
+
                 <div class="section">
                     <h4>2. Informações do veículo</h4>
                     <div class="form-row">
@@ -124,27 +128,18 @@
                 <div class="section">
                     <h4>3. Escolha suas opções de Data e Horário (Opcional)</h4>
                     <p style="font-size: 13px; color: #6b7280; margin-bottom: 12px;">Selecione os dias e horários que você tem disponibilidade para levar o veículo.</p>
-                    
+
                     <div class="date-picker">
                         <button class="nav-day" id="prevDay">&lt;</button>
                         <div class="date-list" id="dateList"></div>
                         <button class="nav-day" id="nextDay">&gt;</button>
                     </div>
-                    
-                    <div class="time-slots" id="timeSlots">
-                        <button class="time-slot">08:00</button>
-                        <button class="time-slot">09:00</button>
-                        <button class="time-slot">10:00</button>
-                        <button class="time-slot">11:00</button>
-                        <button class="time-slot">14:00</button>
-                        <button class="time-slot">15:00</button>
-                        <button class="time-slot">16:00</button>
-                        <button class="time-slot">17:00</button>
-                    </div>
-                    
+
+                    <div class="time-slots" id="timeSlots"></div>
+
                     <div id="selectedList" style="margin-top:20px;"></div>
                 </div>
-                
+
                 <button class="confirm-request" id="requestBtn"><i class="fa-solid fa-paper-plane"></i> Enviar Solicitação de Serviço</button>
             </div>
         </main>
@@ -167,7 +162,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="confirm-modal-overlay" id="confirmModal">
         <div class="confirm-modal">
             <i class="fa-solid fa-circle-check" style="font-size:48px;color:#16a34a;margin-bottom:12px;" id="confirmIcon"></i>
@@ -180,135 +175,255 @@
         </div>
     </div>
 
-    <!-- Scripts -->
+    <!-- Scripts (ordem correta: prestadores antes do global) -->
+    <script src="prestadores.js"></script>
     <script src="global.js"></script>
     <script>
-        // Lógica de Calendário (Mantida intacta, mas limpa das redundâncias globais)
-        let selections = []; 
+        // ===================== ESTADO =====================
+        let selections = [];
         let lastSelectedIso = null;
+        let startOffset = 0;
+        const visibleCount = 7;
+        const maxDays = 60;
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
 
-        document.addEventListener('DOMContentLoaded', function() {
-            initDateList();
-            initTimeSlotBehavior();
-        });
+        // Mapa dia-da-semana (getDay) -> chave salva na agenda do prestador
+        const MAP_DIA = { 0:'dom', 1:'seg', 2:'ter', 3:'qua', 4:'qui', 5:'sex', 6:'sab' };
+        const HORARIOS_PADRAO = ['08:00','09:00','10:00','11:00','14:00','15:00','16:00','17:00'];
 
-        function initDateList() {
-            const dateList = document.getElementById('dateList');
-            const today = new Date();
-            const visibleCount = 7;
-            const maxDays = 60;
-            let startOffset = 0;
+        // Prestador e sua agenda
+        let prestador = null;
+        let agendaPrestador = null;
 
-            function formatBox(d) { 
-                const dayNames = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb']; 
-                return `<div class="day">${dayNames[d.getDay()]}</div><div class="date">${d.getDate()} ${d.toLocaleString('pt-BR',{month:'short'})}</div>`; 
-            }
-
-            function renderSelectedList() {
-                const container = document.getElementById('selectedList');
-                container.innerHTML = '';
-                if (!selections.length) { container.innerHTML = '<div style="color:#6b7280; font-size:14px;">Nenhuma data selecionada ainda.</div>'; return; }
-                
-                selections.forEach(s => {
-                    const d = new Date(today);
-                    d.setDate(today.getDate() + s.offset);
-                    const item = document.createElement('div');
-                    item.style.cssText = 'display:flex; justify-content:space-between; align-items:center; padding:12px; border:1px solid #e5e7eb; border-radius:8px; margin-bottom:8px; background:white;';
-                    
-                    const left = document.createElement('div');
-                    left.innerHTML = `<div style="font-weight:700; color:var(--text-blue);">${d.toLocaleDateString('pt-BR',{weekday:'short', day:'2-digit', month:'short'})}</div><div style="color:#6b7280;font-size:13px"><i class="fa-regular fa-clock"></i> ${s.time || 'Horário a definir'}</div>`;
-                    
-                    const removeBtn = document.createElement('button'); 
-                    removeBtn.className = 'btn-cancel'; removeBtn.style.padding = '6px 12px'; removeBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
-                    removeBtn.onclick = function() { 
-                        selections = selections.filter(x => x.iso !== s.iso); 
-                        if (lastSelectedIso === s.iso) lastSelectedIso = selections.length ? selections[selections.length-1].iso : null; 
-                        renderDates(startOffset); 
-                        renderSelectedList(); 
-                    };
-                    item.appendChild(left); item.appendChild(removeBtn); container.appendChild(item);
-                });
-            }
-
-            function renderDates(start) {
-                dateList.innerHTML = '';
-                for (let i = 0; i < visibleCount; i++) {
-                    const offset = start + i;
-                    const d = new Date(today);
-                    d.setDate(today.getDate() + offset);
-                    const iso = d.toISOString().slice(0,10);
-                    
-                    const box = document.createElement('div');
-                    box.className = 'date-box';
-                    box.dataset.iso = iso; box.dataset.offset = offset;
-                    
-                    const isWeekend = (d.getDay() === 0 || d.getDay() === 6);
-                    if (isWeekend) box.classList.add('disabled');
-                    
-                    box.innerHTML = formatBox(d);
-                    
-                    if (!isWeekend) {
-                        box.addEventListener('click', function(){
-                            const exists = selections.findIndex(x => x.iso === iso);
-                            if (exists >= 0) { 
-                                selections.splice(exists,1); 
-                                box.classList.remove('selected'); 
-                                if (lastSelectedIso === iso) lastSelectedIso = selections.length ? selections[selections.length-1].iso : null; 
-                            } else { 
-                                selections.push({ iso: iso, offset: offset, time: null }); 
-                                box.classList.add('selected'); 
-                                lastSelectedIso = iso; 
-                            }
-                            renderSelectedList();
-                        });
-                    }
-                    if (selections.find(x => x.iso === iso)) box.classList.add('selected');
-                    dateList.appendChild(box);
-                }
-            }
-
-            document.getElementById('prevDay').addEventListener('click', function(){ startOffset = Math.max(0, startOffset - visibleCount); renderDates(startOffset); });
-            document.getElementById('nextDay').addEventListener('click', function(){ startOffset = Math.min(maxDays - visibleCount, startOffset + visibleCount); renderDates(startOffset); });
-            renderDates(startOffset); renderSelectedList();
+        // ===================== HELPERS =====================
+        // ISO no horário LOCAL (evita o bug do toISOString em UTC)
+        function toLocalISO(d) {
+            const ano = d.getFullYear();
+            const mes = String(d.getMonth() + 1).padStart(2, '0');
+            const dia = String(d.getDate()).padStart(2, '0');
+            return `${ano}-${mes}-${dia}`;
         }
 
-        function initTimeSlotBehavior() {
-            const slots = document.querySelectorAll('.time-slot');
-            slots.forEach(s => s.addEventListener('click', function(){
-                if (!lastSelectedIso) { 
-                    showConfirmModal('Atenção','Por favor, selecione um dia no calendário primeiro.', true); 
-                    return; 
-                }
-                slots.forEach(x => x.classList.remove('active-for-assign'));
-                s.classList.add('active-for-assign');
-                
-                const time = s.textContent.trim();
-                const sel = selections.find(x => x.iso === lastSelectedIso);
-                if (sel) sel.time = time;
-                
-                document.dispatchEvent(new Event('selectionsUpdated'));
-            }));
+        // Converte "HH:MM" em minutos
+        function hhmmToMin(str) {
+            if (!str || !str.includes(':')) return null;
+            const [h, m] = str.split(':').map(Number);
+            return h * 60 + m;
+        }
 
-            document.getElementById('requestBtn').addEventListener('click', function(){
-                const description = document.getElementById('serviceDescription').value.trim();
-                const placa = document.getElementById('veiculoPlaca').value.trim();
-                
-                if (!description) { showConfirmModal('Atenção','Por favor, descreva o problema ou serviço.', true); return; }
-                if (!placa) { showConfirmModal('Atenção','Por favor, informe a placa do veículo.', true); return; }
-                
-                // Simulação de envio
-                showConfirmModal('Solicitação Enviada!', 'Sua solicitação foi enviada para o prestador. Você pode acompanhar o status pelo seu painel.');
+        // Gera lista de horários a partir da agenda do prestador (manhã + tarde, de hora em hora)
+        function gerarHorariosDaAgenda(agenda) {
+            if (!agenda) return HORARIOS_PADRAO;
+            const slots = [];
+            const periodos = [
+                [agenda.manhaInicio, agenda.manhaFim],
+                [agenda.tardeInicio, agenda.tardeFim]
+            ];
+            periodos.forEach(([ini, fim]) => {
+                const a = hhmmToMin(ini);
+                const b = hhmmToMin(fim);
+                if (a == null || b == null || b <= a) return;
+                for (let t = a; t < b; t += 60) {
+                    slots.push(String(Math.floor(t / 60)).padStart(2, '0') + ':00');
+                }
+            });
+            return slots.length ? slots : HORARIOS_PADRAO;
+        }
+
+        // Verifica se o dia da semana é atendido pelo prestador
+        function diaDisponivel(d) {
+            const chave = MAP_DIA[d.getDay()];
+            if (agendaPrestador && Array.isArray(agendaPrestador.dias) && agendaPrestador.dias.length) {
+                return agendaPrestador.dias.includes(chave);
+            }
+            // Fallback: bloqueia fim de semana
+            return d.getDay() !== 0 && d.getDay() !== 6;
+        }
+
+        // ===================== PRESTADOR =====================
+        function carregarPrestador() {
+            const id = new URLSearchParams(window.location.search).get('prestador');
+            if (id && typeof getPrestadorById === 'function') {
+                prestador = getPrestadorById(id);
+            }
+
+            if (prestador) {
+                const nomeEl = document.getElementById('prestadorNome');
+                const catEl = document.getElementById('prestadorCategoria');
+                const imgEl = document.getElementById('prestadorImg');
+                if (nomeEl) nomeEl.textContent = prestador.nome;
+                if (catEl) catEl.textContent = prestador.categoria;
+                if (imgEl && prestador.imagemUrl) { imgEl.src = prestador.imagemUrl; imgEl.style.display = 'block'; }
+            }
+
+            // Tenta carregar a agenda real configurada pelo prestador (gerenciamento-perfil)
+            // Estratégia 1: lista de usuários cadastrados
+            try {
+                const usuarios = JSON.parse(localStorage.getItem('agendacar_usuarios')) || [];
+                let u = null;
+                if (prestador) {
+                    u = usuarios.find(x =>
+                        (x.id && x.id === prestador.id) ||
+                        (x.nome && prestador.nome && x.nome.toLowerCase() === prestador.nome.toLowerCase())
+                    );
+                }
+                if (u && u.agenda) agendaPrestador = u.agenda;
+            } catch (e) { /* ignore */ }
+
+            // Estratégia 2 (fallback dev): se a própria sessão for prestador, usa a agenda dela
+            if (!agendaPrestador) {
+                try {
+                    const sessao = JSON.parse(localStorage.getItem('agendacar_sessao'));
+                    if (sessao && sessao.tipo === 'prestador' && sessao.agenda) {
+                        agendaPrestador = sessao.agenda;
+                    }
+                } catch (e) { /* ignore */ }
+            }
+        }
+
+        // ===================== RENDER HORÁRIOS =====================
+        function renderTimeSlots() {
+            const container = document.getElementById('timeSlots');
+            container.innerHTML = '';
+
+            if (!lastSelectedIso) {
+                container.innerHTML = '<p class="hint-msg">Selecione um dia no calendário para ver os horários.</p>';
+                return;
+            }
+
+            const horarios = gerarHorariosDaAgenda(agendaPrestador);
+            const selAtual = selections.find(x => x.iso === lastSelectedIso);
+
+            horarios.forEach(hora => {
+                const slot = document.createElement('button');
+                slot.type = 'button';
+                slot.className = 'time-slot';
+                slot.textContent = hora;
+                if (selAtual && selAtual.time === hora) slot.classList.add('active-for-assign');
+
+                slot.addEventListener('click', function () {
+                    const sel = selections.find(x => x.iso === lastSelectedIso);
+                    if (sel) {
+                        sel.time = (sel.time === hora) ? null : hora; // toggle
+                    }
+                    renderTimeSlots();
+                    renderSelectedList();
+                });
+                container.appendChild(slot);
             });
         }
 
-        document.addEventListener('selectionsUpdated', function(){
-            const container = document.getElementById('selectedList');
-            if(container) {
-                // Reaproveitamos a função que já existe no escopo
-                // Hack rápido para atualizar a lista: clicar no botão "next" e "prev" (sem mover)
-                document.getElementById('prevDay').click();
-                document.getElementById('nextDay').click();
+        // ===================== RENDER DATAS =====================
+        function renderDates() {
+            const dateList = document.getElementById('dateList');
+            const dayNames = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+            dateList.innerHTML = '';
+
+            for (let i = 0; i < visibleCount; i++) {
+                const offset = startOffset + i;
+                const d = new Date(today);
+                d.setDate(today.getDate() + offset);
+                const iso = toLocalISO(d);
+
+                const box = document.createElement('div');
+                box.className = 'date-box';
+                box.dataset.iso = iso;
+                box.innerHTML = `<div class="day">${dayNames[d.getDay()]}</div><div class="date">${d.getDate()} ${d.toLocaleString('pt-BR',{month:'short'})}</div>`;
+
+                if (!diaDisponivel(d)) {
+                    box.classList.add('disabled');
+                } else {
+                    box.addEventListener('click', function () {
+                        const idx = selections.findIndex(x => x.iso === iso);
+                        if (idx >= 0) {
+                            // Já selecionado: clicar de novo apenas foca para escolher horário
+                            lastSelectedIso = iso;
+                        } else {
+                            selections.push({ iso: iso, offset: offset, time: null });
+                            lastSelectedIso = iso;
+                        }
+                        renderDates();
+                        renderTimeSlots();
+                        renderSelectedList();
+                    });
+                }
+
+                if (selections.find(x => x.iso === iso)) box.classList.add('selected');
+                if (iso === lastSelectedIso) box.classList.add('selected');
+                dateList.appendChild(box);
             }
+        }
+
+        // ===================== RENDER RESUMO =====================
+        function renderSelectedList() {
+            const container = document.getElementById('selectedList');
+            container.innerHTML = '';
+
+            if (!selections.length) {
+                container.innerHTML = '<div style="color:#6b7280; font-size:14px;">Nenhuma data selecionada ainda.</div>';
+                return;
+            }
+
+            selections.forEach(s => {
+                const [ano, mes, dia] = s.iso.split('-');
+                const d = new Date(Number(ano), Number(mes) - 1, Number(dia));
+
+                const item = document.createElement('div');
+                item.style.cssText = 'display:flex; justify-content:space-between; align-items:center; padding:12px; border:1px solid #e5e7eb; border-radius:8px; margin-bottom:8px; background:white;';
+
+                const left = document.createElement('div');
+                left.innerHTML = `<div style="font-weight:700; color:var(--text-blue);">${d.toLocaleDateString('pt-BR',{weekday:'short', day:'2-digit', month:'short'})}</div><div style="color:#6b7280;font-size:13px"><i class="fa-regular fa-clock"></i> ${s.time || 'Horário a definir'}</div>`;
+
+                const removeBtn = document.createElement('button');
+                removeBtn.type = 'button';
+                removeBtn.className = 'btn-cancel';
+                removeBtn.style.padding = '6px 12px';
+                removeBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
+                removeBtn.onclick = function () {
+                    selections = selections.filter(x => x.iso !== s.iso);
+                    if (lastSelectedIso === s.iso) {
+                        lastSelectedIso = selections.length ? selections[selections.length - 1].iso : null;
+                    }
+                    renderDates();
+                    renderTimeSlots();
+                    renderSelectedList();
+                };
+
+                item.appendChild(left);
+                item.appendChild(removeBtn);
+                container.appendChild(item);
+            });
+        }
+
+        // ===================== ENVIO =====================
+        function enviarSolicitacao() {
+            const description = document.getElementById('serviceDescription').value.trim();
+            const placa = document.getElementById('veiculoPlaca').value.trim();
+
+            if (!description) { showConfirmModal('Atenção', 'Por favor, descreva o problema ou serviço.', true); return; }
+            if (!placa) { showConfirmModal('Atenção', 'Por favor, informe a placa do veículo.', true); return; }
+
+            showConfirmModal('Solicitação Enviada!', 'Sua solicitação foi enviada para o prestador. Você pode acompanhar o status pelo seu painel.');
+        }
+
+        // ===================== INIT =====================
+        document.addEventListener('DOMContentLoaded', function () {
+            carregarPrestador();
+
+            document.getElementById('prevDay').addEventListener('click', function () {
+                startOffset = Math.max(0, startOffset - visibleCount);
+                renderDates();
+            });
+            document.getElementById('nextDay').addEventListener('click', function () {
+                startOffset = Math.min(maxDays - visibleCount, startOffset + visibleCount);
+                renderDates();
+            });
+            document.getElementById('requestBtn').addEventListener('click', enviarSolicitacao);
+
+            renderDates();
+            renderTimeSlots();
+            renderSelectedList();
         });
     </script>
 </body>
